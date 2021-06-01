@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ShadowButton from '../view/ShadowButton';
+import AppIcon from '../view/AppIcon';
 
 function Greeting(props) {
   return (
     <BaseLayout>
         <SplashLayout>
-            <AppIcon/>
+            <AppIcon width="80px" height="80px"/>
             <AppLabel>Share & Charge</AppLabel>
         </SplashLayout>
         <ShadowButton>
@@ -35,14 +36,7 @@ const SplashLayout = styled.div`
     justify-content: center;
     align-items: center;
 `
-const AppIcon = styled.div`
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #aaaaaa;
-`
 const AppLabel = styled.h1`
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 1.4rem;
 `

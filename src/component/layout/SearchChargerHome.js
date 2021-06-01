@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 import ShadowSearch from '../view/ShadowSearch';
 import ShadowCard from '../view/ShadowCard';
+import AppIcon from '../view/AppIcon';
 
 function SearchChargerHome(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
             <MenuLayout>
-                <AppIcon/>
+                <AppIcon width="40px" height="40px"/>
                 <MenuIcon/>
             </MenuLayout>
             <HeaderLabel>주변의 공유 충전소</HeaderLabel>
@@ -56,13 +57,6 @@ const MenuLayout = styled.div`
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-`
-const AppIcon = styled.div`
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #aaaaaa;
 `
 const MenuIcon = styled.div`
     width: 40px;
