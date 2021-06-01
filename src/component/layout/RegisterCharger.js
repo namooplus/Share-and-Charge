@@ -8,26 +8,21 @@ function RegisterCharger(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
-            <MenuIcon/>
+            <BackIcon/>
         </HeaderLayout>
         <ContentLayout>
-            <Title>충전소 A</Title>
-            <UserLayout>
-                <UserIcon/>
-                <UserLabel>User A</UserLabel>
-            </UserLayout>
+            <TitleInput placeholder="충전소 이름"/>
             <Description>
-                위치 : 서울특별시 서대문구 성산로 408-3
+                위치 : <Input/>
                 <br/>
-                가격 : 시간 당 1650원
+                가격 : 시간 당 <Input/>
                 <br/>
-                사용가능시간 : 13:00~18:00 (5시간)
+                사용가능시간 : <Input/>~<Input/>
                 <br/>
-                충전소 정보 : 220V
+                충전소 정보 : <Input/>
                 <br/>
-                공유자 메모 : 충전 케이블도 같이 구비되어 있습니다.
+                공유자 메모 : <Input/>
             </Description>
-            <MapView/>
         </ContentLayout>
         <FooterLayout>
             <ShadowButton>등록하기</ShadowButton>
@@ -49,7 +44,7 @@ const HeaderLayout = styled.div`
     padding: 30px;
     background-color: lightgray;
 `
-const MenuIcon = styled.div`
+const BackIcon = styled.div`
     width: 40px;
     height: 40px;
     background-color: gray;
@@ -60,37 +55,29 @@ const ContentLayout = styled.div`
     align-items: stretch;
     padding: 30px 30px 138px 30px;
 `
-const Title = styled.h1`
-    margin: 0px;
+const TitleInput = styled.input`
+    border:none;
+    border-bottom: 1px solid black;
     font-size: 1.5rem;
-`
-const UserLayout = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    margin-top: 15px;
-`
-const UserIcon = styled.div`
-    width: 25px;
-    height: 25px;
-    background-color: gray;
-    border-radius: 50%;
-`
-const UserLabel = styled.span`
-    font-size: 0.8rem;
-    font-weight: 400;
-    margin-left: 10px;
+
+    &:focus {
+        outline: none;
+    }
 `
 const Description = styled.p`
     margin: 0px;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 0.9rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
 `
-const MapView = styled.div`
-    height: 230px;
-    background-color: lightgray;
-    margin-top: 15px;
+const Input = styled.input`
+    border:none;
+    border-bottom: 1px solid black;
+    font-size: 0.9rem;
+
+    &:focus {
+        outline: none;
+    }
 `
 const FooterLayout = styled.div`
     position: fixed;
@@ -103,10 +90,4 @@ const FooterLayout = styled.div`
     background-color: white;
     box-shadow: 0 0 20px #aaaaaa;
     gap: 30px;
-`
-const SelectLayout = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: 20px;
 `

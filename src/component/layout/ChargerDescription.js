@@ -8,7 +8,7 @@ function ChargerDescription(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
-            <MenuIcon/>
+            <BackIcon/>
         </HeaderLayout>
         <ContentLayout>
             <Title>충전소 A</Title>
@@ -54,7 +54,7 @@ const HeaderLayout = styled.div`
     padding: 30px;
     background-color: lightgray;
 `
-const MenuIcon = styled.div`
+const BackIcon = styled.div`
     width: 40px;
     height: 40px;
     background-color: gray;
