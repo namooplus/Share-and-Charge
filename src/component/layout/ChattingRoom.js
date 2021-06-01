@@ -48,7 +48,7 @@ const ContentLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
-    padding: 30px 30px 138px 30px;
+    padding: 30px 30px 95px 30px;
     gap: 20px;
 `
 const MyChat = styled.div`
@@ -82,7 +82,6 @@ const FooterLayout = styled.div`
     box-sizing: border-box;
     background-color: white;
     box-shadow: 0 0 20px #aaaaaa;
-    gap: 15px;
 `
 const Input = styled.input`
     height: 35px;

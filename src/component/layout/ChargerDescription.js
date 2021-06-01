@@ -63,7 +63,7 @@ const ContentLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
-    padding: 30px 30px 138px 30px;
+    padding: 30px 30px 216px 30px;
 `
 const Title = styled.h1`
     margin: 0px;
