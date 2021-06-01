@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 import ShadowButton from '../view/ShadowButton';
 import AppIcon from '../view/AppIcon';
@@ -11,9 +13,7 @@ function Greeting(props) {
             <AppIcon width="80px" height="80px"/>
             <AppLabel>Share & Charge</AppLabel>
         </SplashLayout>
-        <ShadowButton>
-            구글 계정으로 로그인
-        </ShadowButton>
+        <ShadowButton><FontAwesomeIcon icon={faGoogle}/>&nbsp;&nbsp;구글 계정으로 로그인</ShadowButton>
     </BaseLayout>
   );
 }

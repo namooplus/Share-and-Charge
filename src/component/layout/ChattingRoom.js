@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function ChattingRoom(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
-            <BackIcon/>
+            <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
             <HeaderLabel>OO와의 채팅</HeaderLabel>
         </HeaderLayout>
         <ContentLayout>
@@ -14,7 +17,7 @@ function ChattingRoom(props) {
         </ContentLayout>
         <FooterLayout>
             <Input placeholder="메시지를 입력하세요"/>
-            <SendIcon/>
+            <SendIcon><FontAwesomeIcon icon={faPaperPlane}/></SendIcon>
         </FooterLayout>
     </BaseLayout>
   );
@@ -35,9 +38,20 @@ const HeaderLayout = styled.div`
     padding: 30px 30px 0 30px;
 `
 const BackIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    background-color: gray;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: black;
+    transition: background-color 500ms;
+
+    &:hover {
+        background-color: lightgray;
+    }
 `
 const HeaderLabel = styled.h1`
     margin: 0px;
@@ -82,6 +96,7 @@ const FooterLayout = styled.div`
     box-sizing: border-box;
     background-color: white;
     box-shadow: 0 0 20px #aaaaaa;
+    gap: 5px;
 `
 const Input = styled.input`
     height: 35px;
@@ -96,7 +111,17 @@ const Input = styled.input`
     }
 `
 const SendIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 35px;
     height: 35px;
-    background-color: gray;
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: black;
+    transition: background-color 500ms;
+
+    &:hover {
+        background-color: lightgray;
+    }
 `

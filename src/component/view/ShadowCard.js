@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function ShadowCard(props) {
   return (
     <Card>
-        <img src={props.chargerImage} width="100%" height="170px"/>
+        <Image src={props.chargerImage}/>
         <DescriptionLayout>
             <Title>{props.chargerTitle}</Title>
             <Subtitle>{props.chargerDescription}</Subtitle>
@@ -28,6 +28,11 @@ const Card = styled.div`
     &:hover {
         background-color: lightgray;
     }
+`
+const Image = styled.img`
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
 `
 const DescriptionLayout = styled.div`
     padding: 15px;

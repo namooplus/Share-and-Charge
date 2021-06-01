@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 import ShadowButton from '../view/ShadowButton';
 
@@ -7,7 +10,7 @@ function Payment(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
-            <BackIcon/>
+            <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
             <HeaderLabel>결제</HeaderLabel>
         </HeaderLayout>
         <ContentLayout>
@@ -24,7 +27,7 @@ function Payment(props) {
                     결제 후 남은 크레딧 : 5050
                 </Description>
             </Panel>
-            <ArrowIcon/>
+            <FontAwesomeIcon icon={faArrowDown} size="lg"/>
             <Panel>
                 <UserLayout>
                     <UserIcon/>
@@ -54,9 +57,20 @@ const HeaderLayout = styled.div`
     padding: 30px 30px 0 30px;
 `
 const BackIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    background-color: gray;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: black;
+    transition: background-color 500ms;
+
+    &:hover {
+        background-color: lightgray;
+    }
 `
 const HeaderLabel = styled.h1`
     margin: 0px;
@@ -100,11 +114,6 @@ const Description = styled.p`
     margin-top: 15px;
     font-size: 0.9rem;
     line-height: 1.3rem;
-`
-const ArrowIcon = styled.div`
-    width: 40px;
-    height: 40px;
-    background-color: gray;
 `
 const FooterLayout = styled.div`
     position: fixed;
