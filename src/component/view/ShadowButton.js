@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function ShadowButton(props) {
   return <Button>{props.children}</Button>;

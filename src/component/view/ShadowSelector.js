@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function ShadowSelector(props) {
   return <Input type="time" value={props.value}/>;
