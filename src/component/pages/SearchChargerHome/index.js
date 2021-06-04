@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ContentLayout } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,12 +60,14 @@ function SearchChargerHome(props) {
                         return <div style={{textAlign: 'center'}}>오류 : 주변의 공유 충전소를 불러올 수 없습니다!</div>
                     else
                         return (
-                            <ShadowCard
-                            chargerImage={tempChargerImage}
-                            chargerTitle={data.name}
-                            chargerDescription={`${data.distance} | ${data.price} | ${data.time}`}
-                            chargerUserIcon
-                            chargerUserLabel={data.share}/>
+                            <Link style={{textDecoration: "none", color: "inherit"}} to="/detail">
+                                <ShadowCard
+                                    chargerImage={tempChargerImage}
+                                    chargerTitle={data.name}
+                                    chargerDescription={`${data.distance} | ${data.price} | ${data.time}`}
+                                    chargerUserIcon
+                                    chargerUserLabel={data.share}/>
+                            </Link>
                         )
                 })}
             </ContentLayout>

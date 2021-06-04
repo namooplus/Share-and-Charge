@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ContentLayout, FooterLayout } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,16 +47,20 @@ function MyChargerList(props) {
                         return <div style={{textAlign: 'center'}}>오류 : 나의 공유 충전소를 불러올 수 없습니다!</div>
                     else
                         return (
-                            <ShadowCard
-                            chargerImage={tempChargerImage}
-                            chargerTitle={data.name}
-                            chargerDescription={`${data.distance} | ${data.price} | ${data.time}`}
-                            type="self"/>
+                            <Link style={{textDecoration: "none", color: "inherit"}} to="/detail">
+                                <ShadowCard
+                                    chargerImage={tempChargerImage}
+                                    chargerTitle={data.name}
+                                    chargerDescription={`${data.distance} | ${data.price} | ${data.time}`}
+                                    type="self"/>                                
+                            </Link>     
                         )
                 })}
             </ContentLayout>
             <FooterLayout>
-                <ShadowButton>추가하기</ShadowButton>
+                <Link style={{textDecoration: "none", color: "inherit"}} to="/registercharger">
+                    <ShadowButton>추가하기</ShadowButton>
+                </Link>
             </FooterLayout>
         </BaseLayout>
   );

@@ -9,7 +9,7 @@ function RegisterCharger(props) {
   
   return (
     <BaseLayout>
-        <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
+        <BackIcon onClick={props.history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
         <HeaderLayout>
             
         </HeaderLayout>

@@ -10,7 +10,7 @@ function Payment(props) {
   return (
     <BaseLayout>
         <HeaderLayout>
-            <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
+            <BackIcon onClick={props.history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
             <HeaderLabel>결제</HeaderLabel>
         </HeaderLayout>
         <ContentLayout>
