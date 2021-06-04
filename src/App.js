@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import Greeting from './component/layout/Greeting';
-import SearchChargerHome from './component/layout/SearchChargerHome';
-import MyChargerList from './component/layout/MyChargerList';
-import ChargerDescription from './component/layout/ChargerDescription';
-import RegisterCharger from './component/layout/RegisterCharger';
-import ChattingRoom from './component/layout/ChattingRoom';
-import Payment from './component/layout/Payment';
+import Greeting from './component/pages/Greeting/index';
+import SearchChargerHome from './component/pages/SearchChargerHome/index';
+import MyChargerList from './component/pages/MyChargerList/index';
+import ChargerDescription from './component/pages/ChargerDescription/index';
+import RegisterCharger from './component/pages/RegisterCharger/index';
+import ChattingRoom from './component/pages/ChattingRoom/index';
+import Payment from './component/pages/Payment/index';
 
 function App() {
   return (

@@ -11,8 +11,8 @@ function AppIcon(props) {
       <path d="M317.186 90.7585L307.839 41L380.181 79.8559L326.533 140.517L317.186 90.7585Z" fill="white"/>
       <defs>
       <linearGradient id="paint0_linear" x1="233" y1="130.5" x2="516" y2="691" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#5DF029"/>
-        <stop offset="1" stop-color="#27DC65"/>
+        <stop stopColor="#5DF029"/>
+        <stop offset="1" stopColor="#27DC65"/>
       </linearGradient>
       </defs>
     </svg>

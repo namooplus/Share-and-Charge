@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+
+import { BaseLayout, HeaderLayout, BackIcon, HeaderLabel, ContentLayout, Panel, UserLayout, UserIcon, UserLabel, Description, FooterLayout} from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import ShadowButton from '../../common/ShadowButton';
 
-import ShadowButton from '../view/ShadowButton';
-import {BaseLayout, HeaderLayout, BackIcon, HeaderLabel, ContentLayout, Panel, UserLayout, UserIcon, UserLabel, Description, FooterLayout} from './components/Payment.components'
 function Payment(props) {
   return (
     <BaseLayout>
