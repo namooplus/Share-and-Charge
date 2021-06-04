@@ -1,13 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+
+import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, MapView, FooterLayout, SelectLayout } from './components';
+import ShadowSelector from '../../common/ShadowSelector';
+import ShadowButton from '../../common/ShadowButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-import ShadowSelector from '../view/ShadowSelector';
-import ShadowButton from '../view/ShadowButton';
+import tempChargerImage from '../../../img/temp-charger-image.png';
 
-import tempChargerImage from '../../img/temp-charger-image.png';
-import {BaseLayout, BackIcon, HeaderLabel, Image, ContentLayout, Title, UserIcon, UserLabel, MapView, SelectLayout,HeaderLayout, UserLayout,Description, FooterLayout} from './components/ChargerDescription.components'
 function ChargerDescription(props) {
   return (
     <BaseLayout>

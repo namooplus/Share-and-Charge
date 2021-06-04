@@ -1,13 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+
+import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ContentLayout } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import ShadowSearch from '../../common/ShadowSearch';
+import ShadowCard from '../../common/ShadowCard';
+import AppIcon from '../../common/AppIcon';
 
-import ShadowSearch from '../view/ShadowSearch';
-import ShadowCard from '../view/ShadowCard';
-import AppIcon from '../view/AppIcon';
-
-import tempChargerImage from '../../img/temp-charger-image.png';
+import tempChargerImage from '../../../img/temp-charger-image.png';
 
 function SearchChargerHome(props) {
   return (
@@ -45,51 +45,3 @@ function SearchChargerHome(props) {
 }
 
 export default SearchChargerHome;
-
-const BaseLayout = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: stretch;
-`
-const HeaderLayout = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: stretch;
-    padding: 30px 30px 0 30px;
-`
-const MenuLayout = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-`
-const MenuIcon = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    color: black;
-    transition: background-color 500ms;
-
-    &:hover {
-        background-color: lightgray;
-    }
-`
-const HeaderLabel = styled.h1`
-    margin: 0px;
-    margin-top: 30px;
-    font-size: 1.5rem;
-`
-const ContentLayout = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    padding: 30px;
-    gap: 30px;
-`
