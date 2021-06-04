@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 
 import { BaseLayout, SplashLayout, AppLabel } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +13,12 @@ const responseGoogle = (response) =>{
   console.log(response.profileObj);
 
 }
+const cookies = new Cookies();
+cookies.set("G_AUTHUSER_H", 0, {secure: true, sameSite: 'none'});
+cookies.set("__Host-1PLSID", 0, {secure: true, sameSite: 'none'});
+cookies.set("__Secure-1PAPISID", 0, {secure: true, sameSite: 'none'});
+
+// cookies.set(key2, value2, {secure: true, sameSite: 'none'});
 function Greeting(props) {
     
   return (
@@ -25,7 +32,7 @@ function Greeting(props) {
             buttonText="Login"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
+            // cookiePolicy={"single_host_origin"}
         />
         <ShadowButton><FontAwesomeIcon icon={faGoogle}/>&nbsp;&nbsp;구글 계정으로 로그인</ShadowButton>
     </BaseLayout>
