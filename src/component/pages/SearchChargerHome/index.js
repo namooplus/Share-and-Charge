@@ -16,7 +16,7 @@ function SearchChargerHome(props) {
 
     const successGet = (position) => {
         // 주변의 공유 충전소 리스트 요청
-        // axios.post('./tempCharger.json', {
+        // axios.post('/api/chargeList', {
         //     latitude: position.coords.latitude,
         //     longitude: position.coords.longitude
         // })
