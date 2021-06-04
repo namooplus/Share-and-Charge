@@ -6,6 +6,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import ShadowButton from '../../common/ShadowButton';
 
 function RegisterCharger(props) {
+  
   return (
     <BaseLayout>
         <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
