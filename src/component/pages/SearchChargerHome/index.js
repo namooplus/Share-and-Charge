@@ -50,6 +50,8 @@ function SearchChargerHome(props) {
                     <MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon>
                 </MenuLayout>
                 <HeaderLabel>주변의 공유 충전소</HeaderLabel>
+                {/* logout button example 배치랑 디자인은 알아서  */}
+                <button onClick={() => props.auth.signOut()}> logout</button>
             </HeaderLayout>
             <ContentLayout>
                 <ShadowSearch placeholder="원하는 지역의 공유 주차장을 입력하세요"/>
