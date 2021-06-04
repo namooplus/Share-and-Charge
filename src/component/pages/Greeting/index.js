@@ -50,7 +50,8 @@ function Greeting(props) {
       
       // The signed-in user info.
       var user = result.user;
-      console.log(user, token);
+      console.log(user);
+      console.log(token);
       // ...
     }).catch((error) => {
       console.log(error)
