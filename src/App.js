@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 
 import Greeting from './component/pages/Greeting/index';
 import SearchChargerHome from './component/pages/SearchChargerHome/index';
@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/registercharger" component={RegisterCharger}/>
         <Route exact path="/chat" component={ChattingRoom}/>
         <Route exact path="/payment" component={Payment}/>
+        <Route component={() => <Redirect to="/"/>} />
       </Switch>
     </Router>
   );
