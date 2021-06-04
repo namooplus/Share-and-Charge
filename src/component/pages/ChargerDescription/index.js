@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, MapView, FooterLayout, SelectLayout } from './components';
+import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
 import ShadowSelector from '../../common/ShadowSelector';
 import ShadowButton from '../../common/ShadowButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,7 +38,7 @@ function ChargerDescription(props) {
                     <br/>
                     공유자 메모 : {chargerData.memo}
                 </Description>
-                <MapView/>
+                <Map/>
             </ContentLayout>
             <FooterLayout>
                 <SelectLayout>

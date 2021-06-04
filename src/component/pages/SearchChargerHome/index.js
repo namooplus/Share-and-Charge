@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ContentLayout } from './components';
+import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ToggleLayout, ToggleItem, ContentLayout } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import ShadowSearch from '../../common/ShadowSearch';
 import ShadowCard from '../../common/ShadowCard';
 import AppIcon from '../../common/AppIcon';
 
@@ -50,9 +49,12 @@ function SearchChargerHome(props) {
                     <MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon>
                 </MenuLayout>
                 <HeaderLabel>주변의 공유 충전소</HeaderLabel>
+                <ToggleLayout>
+                    <ToggleItem selected>리스트</ToggleItem>
+                    <ToggleItem><Link style={{textDecoration: "none", color: "inherit"}} to="/map">지도</Link></ToggleItem>
+                </ToggleLayout>
             </HeaderLayout>
             <ContentLayout>
-                <ShadowSearch placeholder="원하는 지역의 공유 주차장을 입력하세요"/>
                 {chargerList.map((data) => {
                     if (data === 0)
                         return <div style={{textAlign: 'center'}}>불러오는 중...</div>

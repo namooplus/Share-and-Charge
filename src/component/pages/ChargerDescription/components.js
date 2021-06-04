@@ -67,7 +67,7 @@ export const Description = styled.p`
     font-size: 0.9rem;
     line-height: 1.5rem;
 `
-export const MapView = styled.div`
+export const Map = styled.div`
     height: 230px;
     background-color: lightgray;
     margin-top: 15px;
