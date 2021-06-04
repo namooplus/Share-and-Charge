@@ -20,3 +20,7 @@ export const AppLabel = styled.h1`
     margin-top: 15px;
     font-size: 1.4rem;
 `
+export const ButtonWrapper = styled.div`
+    width: 90vw;
+    
+`
