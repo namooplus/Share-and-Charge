@@ -1,0 +1,42 @@
+[
+    {
+        "name": "A",
+        "location": "어디어디어디어디",
+        "distance": "15km",
+        "price": "1650원",
+        "time": "13:00~18:00",
+        "share": "User A"
+    },
+    {
+        "name": "B",
+        "location": "어디어디어디어디",
+        "distance": "12km",
+        "price": "1500원",
+        "time": "13:00~18:00",
+        "share": "User B"
+    },
+    {
+        "name": "C",
+        "location": "어디어디어디어디",
+        "distance": "10km",
+        "price": "1450원",
+        "time": "13:00~18:00",
+        "share": "User C"
+    },
+    {
+        "name": "D",
+        "location": "어디어디어디어디",
+        "distance": "21km",
+        "price": "1200원",
+        "time": "13:00~18:00",
+        "share": "User D"
+    },
+    {
+        "name": "E",
+        "location": "어디어디어디어디",
+        "distance": "27km",
+        "price": "1800원",
+        "time": "13:00~18:00",
+        "share": "User E"
+    }
+]
