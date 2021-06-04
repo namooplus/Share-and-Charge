@@ -60,7 +60,12 @@ function SearchChargerHome(props) {
                         return <div style={{textAlign: 'center'}}>오류 : 주변의 공유 충전소를 불러올 수 없습니다!</div>
                     else
                         return (
-                            <Link style={{textDecoration: "none", color: "inherit"}} to="/detail">
+                            <Link 
+                                style={{textDecoration: "none", color: "inherit"}} 
+                                to={{
+                                    pathname: "/detail",
+                                    state: data
+                                }}>
                                 <ShadowCard
                                     chargerImage={tempChargerImage}
                                     chargerTitle={data.name}
