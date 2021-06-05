@@ -16,7 +16,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import ShadowButton from "../../common/ShadowButton";
 import AppIcon from "../../common/AppIcon";
-
+import axios from "axios"
 import SearchChargerHome from "../SearchChargerHome/index";
 
 
@@ -34,7 +34,8 @@ const auth = firebase.auth();
 function Home() {
   const [user] = useAuthState(auth);
 
-
+  useEffect(()=>{axios.get()})
+  
 
   return <>{user ? <SearchChargerHome auth={auth} /> : <Greeting />}</>;
 }
