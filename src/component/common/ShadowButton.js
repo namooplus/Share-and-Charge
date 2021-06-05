@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 function ShadowButton(props) {
-  return <Button>{props.children}</Button>;
+  return <Button onClick={props.onClick}>{props.children}</Button>;
 }
 
 export default ShadowButton;

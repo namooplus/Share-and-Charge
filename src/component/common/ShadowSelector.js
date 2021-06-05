@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 function ShadowSelector(props) {
-  return <Input type="time" value={props.value}/>;
+  return <Input type="time" value={props.value} onChange={props.onChange}/>;
 }
 
 export default ShadowSelector;

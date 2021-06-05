@@ -1,6 +1,7 @@
 /*global kakao*/
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ToggleLayout, ToggleItem, ContentLayout, Map } from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -99,4 +100,4 @@ function MapView(props) {
     );
 }
 
-export default MapView;
+export default withRouter(MapView);

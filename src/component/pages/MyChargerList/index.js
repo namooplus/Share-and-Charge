@@ -17,7 +17,7 @@ function MyChargerList(props) {
     useEffect(() => {
         // 나의 공유 충전소 리스트 요청
         // axios.post('/api/myChargerList', {
-        //     userId: ...
+        //     user_email: ...
         // })
         axios.get('./tempData/myChargerList.json')
         // 나의 공유 충전소 리스트 출력
