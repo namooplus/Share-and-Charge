@@ -49,8 +49,10 @@ function SearchChargerHome(props) {
                     <Link to="/menu"><MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon></Link>
                 </MenuLayout>
                 <HeaderLabel>주변의 공유 충전소</HeaderLabel>
-                {/* logout button example 배치랑 디자인은 알아서  */}
-                <button onClick={() => props.auth.signOut()}> logout</button>
+                <ToggleLayout>
+                    <ToggleItem selected>리스트</ToggleItem>
+                    <ToggleItem><Link style={{textDecoration: "none", color: "inherit"}} to="/map">지도</Link></ToggleItem>
+                </ToggleLayout>
             </HeaderLayout>
             <ContentLayout>
                 {chargerList.map((data) => {
