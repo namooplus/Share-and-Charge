@@ -1,42 +1,74 @@
 [
     {
         "name": "A",
-        "location": "어디어디어디어디",
-        "distance": "15km",
+        "location": "신촌",
+        "distance_from": "15km",
         "price": "1650원",
         "time": "13:00~18:00",
-        "share": "User A"
+        "user": "User A",
+        "position": {
+            "latitude": 37.565970,
+            "longitude": 126.938093
+        }
     },
     {
         "name": "B",
-        "location": "어디어디어디어디",
-        "distance": "12km",
+        "location": "서울역",
+        "distance_from": "12km",
         "price": "1500원",
-        "time": "13:00~18:00",
-        "share": "User B"
+        "time": "11:00~15:00",
+        "user": "User B",
+        "position": {
+            "latitude": 37.555244,
+            "longitude": 126.970385
+        }
     },
     {
         "name": "C",
-        "location": "어디어디어디어디",
-        "distance": "10km",
+        "location": "왕십리",
+        "distance_from": "10km",
         "price": "1450원",
-        "time": "13:00~18:00",
-        "share": "User C"
+        "time": "16:00~18:00",
+        "user": "User C",
+        "position": {
+            "latitude": 37.560795,
+            "longitude": 127.039050
+        }
     },
     {
         "name": "D",
-        "location": "어디어디어디어디",
-        "distance": "21km",
+        "location": "여의도",
+        "distance_from": "21km",
         "price": "1200원",
-        "time": "13:00~18:00",
-        "share": "User D"
+        "time": "1:00~8:00",
+        "user": "User D",
+        "position": {
+            "latitude": 37.525886,
+            "longitude": 126.928346
+        }
     },
     {
         "name": "E",
-        "location": "어디어디어디어디",
-        "distance": "27km",
+        "location": "서울대입구역",
+        "distance_from": "27km",
         "price": "1800원",
-        "time": "13:00~18:00",
-        "share": "User E"
+        "time": "14:00~20:00",
+        "user": "User E",
+        "position": {
+            "latitude": 37.481297,
+            "longitude": 126.952711
+        }
+    },
+    {
+        "name": "F",
+        "location": "강남역",
+        "distance_from": "5km",
+        "price": "2300원",
+        "time": "13:00~16:00",
+        "user": "User F",
+        "position": {
+            "latitude": 37.497859,
+            "longitude": 127.027584
+        }
     }
 ]

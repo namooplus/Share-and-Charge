@@ -1,4 +1,6 @@
-import React from 'react';
+/*global kakao*/
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
 import ShadowSelector from '../../common/ShadowSelector';
@@ -12,8 +14,25 @@ function ChargerDescription(props) {
     const chargerData = props.location.state;
     if (!chargerData) {
         alert('잘못된 접근입니다.');
-        return props.history.goBack();
+        props.history.goBack();
     }
+
+    useEffect(() => {
+        // 충전소 위치 지도 표시
+        const location = new kakao.maps.LatLng(chargerData.position.latitude, chargerData.position.longitude);
+        let container = document.getElementById('charger-map-detail');
+        let options = {
+            center: location,
+            level: 3
+        };
+        const map = new kakao.maps.Map(container, options);
+
+        // 충전소 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: location
+        });
+        marker.setMap(map);
+    }, []);
 
     return (
         <BaseLayout>
@@ -25,7 +44,7 @@ function ChargerDescription(props) {
                 <Title>{chargerData.name}</Title>
                 <UserLayout>
                     <UserIcon/>
-                    <UserLabel>{chargerData.share}</UserLabel>
+                    <UserLabel>{chargerData.user}</UserLabel>
                 </UserLayout>
                 <Description>
                     위치 : {chargerData.location}
@@ -38,7 +57,7 @@ function ChargerDescription(props) {
                     <br/>
                     공유자 메모 : {chargerData.memo}
                 </Description>
-                <Map/>
+                <Map id="charger-map-detail"/>
             </ContentLayout>
             <FooterLayout>
                 <SelectLayout>
@@ -46,7 +65,9 @@ function ChargerDescription(props) {
                     ~
                     <ShadowSelector value={chargerData.time.split('~')[1]}/>
                 </SelectLayout>
-                <ShadowButton>요청하기</ShadowButton>
+                <Link style={{textDecoration: "none", color: "inherit"}} to="/chat">
+                    <ShadowButton>요청하기</ShadowButton>
+                </Link>
             </FooterLayout>
         </BaseLayout>
     );

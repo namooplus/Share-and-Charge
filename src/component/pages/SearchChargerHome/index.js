@@ -71,9 +71,9 @@ function SearchChargerHome(props) {
                                 <ShadowCard
                                     chargerImage={tempChargerImage}
                                     chargerTitle={data.name}
-                                    chargerDescription={`${data.distance} | ${data.price} | ${data.time}`}
+                                    chargerDescription={`${data.distance_from} | ${data.price} | ${data.time}`}
                                     chargerUserIcon
-                                    chargerUserLabel={data.share}/>
+                                    chargerUserLabel={data.user}/>
                             </Link>
                         )
                 })}

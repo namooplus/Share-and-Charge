@@ -1,23 +1,38 @@
 [
     {
-        "name": "나의 첫번째 공유 충전소",
-        "location": "어디어디어디어디",
-        "distance": "15km",
-        "price": "1650원",
-        "time": "13:00~18:00"
-    },
-    {
-        "name": "나의 두번째 공유 충전소",
-        "location": "어디어디어디어디",
-        "distance": "12km",
+        "name": "나의 공유 충전소 A",
+        "location": "서울역",
+        "distance_from": "12km",
         "price": "1500원",
-        "time": "13:00~18:00"
+        "time": "11:00~15:00",
+        "user": "User A",
+        "position": {
+            "latitude": 37.555244,
+            "longitude": 126.970385
+        }
     },
     {
-        "name": "나의 세번째 공유 충전소",
-        "location": "어디어디어디어디",
-        "distance": "10km",
+        "name": "나의 공유 충전소 B",
+        "location": "왕십리",
+        "distance_from": "10km",
         "price": "1450원",
-        "time": "13:00~18:00"
+        "time": "16:00~18:00",
+        "user": "User A",
+        "position": {
+            "latitude": 37.560795,
+            "longitude": 127.039050
+        }
+    },
+    {
+        "name": "나의 공유 충전소 C",
+        "location": "여의도",
+        "distance_from": "21km",
+        "price": "1200원",
+        "time": "1:00~8:00",
+        "user": "User A",
+        "position": {
+            "latitude": 37.525886,
+            "longitude": 126.928346
+        }
     }
 ]
