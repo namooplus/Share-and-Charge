@@ -6,8 +6,8 @@ function MyPage() {
     const {token} = useContext(TokenContext); 
     return (
         <div>
-            <div>{token}</div>
-            <div>{username}</div>
+            <div>{localStorage.getItem("token")}</div>
+            <div>{localStorage.getItem("username")}</div>
         </div>
     )
 }
