@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,14 +16,16 @@ import RegisterCharger from "./component/pages/RegisterCharger/index";
 import ChattingRoom from "./component/pages/ChattingRoom/index";
 import Payment from "./component/pages/Payment/index";
 import Menu from "./component/pages/Menu/index";
-import { UserProvider } from "./component/pages/context/UserNameContext";
+import { UserContext } from "./component/pages/context/UserNameContext";
 import { TokenProvider } from "./component/pages/context/TokenContext";
 import MyPage from "./component/pages/MyPage/index";
 import RegisterUser from "./component/pages/RegisterUser/index"
 function App() {
+  const [username, setUsername] = useState("default user");
+  useEffect(()=>{console.log("appjs ", username); setUsername(localStorage.getItem("username"))}, [localStorage.getItem("username")])
   return (
     <TokenProvider>
-      <UserProvider>
+      <UserContext.Provider value={{username, setUsername}}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -40,7 +42,7 @@ function App() {
             <Route component={() => <Redirect to="/" />} />
           </Switch>
         </Router>
-      </UserProvider>
+      </UserContext.Provider>
     </TokenProvider>
   );
 }
