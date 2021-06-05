@@ -19,6 +19,7 @@ import Menu from "./component/pages/Menu/index";
 import { UserProvider } from "./component/pages/context/UserNameContext";
 import { TokenProvider } from "./component/pages/context/TokenContext";
 import MyPage from "./component/pages/MyPage/index";
+import RegisterUser from "./component/pages/RegisterUser/index"
 function App() {
   return (
     <TokenProvider>
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/payment" component={Payment} />
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/mypage" component={MyPage} />
+            <Route exact path="/signup" component={RegisterUser}/>
             <Route component={() => <Redirect to="/" />} />
           </Switch>
         </Router>
