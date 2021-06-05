@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useContext} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import {UserContext} from "../context/UserNameContext"
 const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 function RegisterUser() {
   const classes = useStyles();
+  const {username} = useContext(UserContext);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -64,8 +66,9 @@ function RegisterUser() {
                 variant="outlined"
                 required
                 fullWidth
+                disabled
                 id="email"
-                label="Email Address"
+                label={username}
                 name="email"
                 autoComplete="email"
               />
