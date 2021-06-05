@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 
 import Home from './component/pages/Greeting/index';
 import SearchChargerHome from './component/pages/SearchChargerHome/index';
+import MapView from './component/pages/MapView/index';
 import MyChargerList from './component/pages/MyChargerList/index';
 import ChargerDescription from './component/pages/ChargerDescription/index';
 import RegisterCharger from './component/pages/RegisterCharger/index';
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}/>
         {/* <Route exact path="/login" component={Greeting}/> */}
+        <Route exact path="/map" component={MapView}/>
         <Route exact path="/mycharger" component={MyChargerList}/>
         <Route exact path="/detail" component={ChargerDescription}/>
         <Route exact path="/registercharger" component={RegisterCharger}/>

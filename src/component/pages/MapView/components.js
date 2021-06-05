@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components/macro';
 
 export const BaseLayout = styled.div`
     display: flex;
+    height: 100vh;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: stretch;
@@ -11,7 +12,7 @@ export const HeaderLayout = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: stretch;
-    padding: 30px 30px 0 30px;
+    padding: 30px;
 `
 export const MenuLayout = styled.div`
     display: flex;
@@ -84,8 +85,10 @@ export const ToggleItem = styled.button`
 `
 export const ContentLayout = styled.div`
     display: flex;
+    flex: 1 1 0;
     flex-flow: column nowrap;
     align-items: stretch;
-    padding: 30px;
-    gap: 30px;
+`
+export const Map = styled.div`
+    height: 100%;
 `
