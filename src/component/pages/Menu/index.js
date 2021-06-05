@@ -8,6 +8,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 function Menu(props) {
     const logout = () => {
         firebase.auth().signOut();
+        localStorage.removeItem("username");
+        localStorage.removeItem("token");
     }
     return (
         <BaseLayout>
@@ -17,6 +19,7 @@ function Menu(props) {
             <ContentLayout>
                 <CustomLink to="/">주변의 공유 충전소</CustomLink>
                 <CustomLink to="/mycharger">나의 공유 충전소</CustomLink>
+                <CustomLink to="/mypage">나의 정보</CustomLink>
                 <CustomLink onClick={logout} to="/">로그아웃</CustomLink>
             </ContentLayout>
         </BaseLayout>
