@@ -20,7 +20,14 @@ function MapView(props) {
             var marker = new kakao.maps.Marker({
                 map: map,
                 title: charger.name,
-                position: new kakao.maps.LatLng(charger.position.latitude, charger.position.longitude)
+                position: new kakao.maps.LatLng(charger.position.latitude, charger.position.longitude),
+                clickable: true
+            });
+            kakao.maps.event.addListener(marker, 'click', function() {
+                 props.history.push({
+                    pathname: "/detail",
+                    state: charger
+                 });
             });
         }
     }
@@ -78,6 +85,14 @@ function MapView(props) {
                 </ToggleLayout>
             </HeaderLayout>
             <ContentLayout>
+                {chargerList.map((data) => {
+                    if (data === 0)
+                        return <div style={{textAlign: 'center'}}>불러오는 중...</div>
+                    else if (data === 1)
+                        return <div style={{textAlign: 'center'}}>오류 : 주변의 공유 충전소를 불러올 수 없습니다!</div>
+                    else
+                        return null;
+                })}
                 <Map id="charger-map-all"/>
             </ContentLayout>
         </BaseLayout>
