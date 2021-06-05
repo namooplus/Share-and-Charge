@@ -4,15 +4,20 @@
   display: flex;
 }
 .sendbird-app__channellist-wrap {
-  max-width: 320px;
+  width: 100vw;
 }
 .sendbird-app__conversation-wrap {
-  flex: 1;
-  position: relative;
+  width: 100vw;
 }
 .sendbird-app__settingspanel-wrap {
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
+}
+.sendbird-channel-list{
+  width: 100%;
+}
+.sendbird-app__wrap.sendbird-app__channellist-wrap{
+  max-width: 100vw;
 }
