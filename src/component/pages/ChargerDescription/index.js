@@ -1,5 +1,6 @@
 /*global kakao*/
 import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
@@ -12,10 +13,8 @@ import tempChargerImage from '../../../img/temp-charger-image.png';
 
 function ChargerDescription(props) {
     const chargerData = props.location.state;
-    if (!chargerData) {
-        alert('잘못된 접근입니다.');
+    if (!chargerData)
         props.history.goBack();
-    }
 
     useEffect(() => {
         // 충전소 위치 지도 표시
@@ -73,5 +72,5 @@ function ChargerDescription(props) {
     );
 }
 
-export default ChargerDescription;
+export default withRouter(ChargerDescription);
 

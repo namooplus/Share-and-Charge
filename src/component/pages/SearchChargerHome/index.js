@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { BaseLayout, HeaderLayout, MenuLayout, MenuIcon, HeaderLabel, ToggleLayout, ToggleItem, ContentLayout } from './components';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { BaseLayout, HeaderLayout, MenuLayout, HeaderLabel, ToggleLayout, ToggleItem, ContentLayout } from './components';
+import Hamburger from '../../common/Hamburger';
 import ShadowCard from '../../common/ShadowCard';
 import AppIcon from '../../common/AppIcon';
 
@@ -46,7 +45,7 @@ function SearchChargerHome(props) {
             <HeaderLayout>
                 <MenuLayout>
                     <AppIcon width="40px" height="40px"/>
-                    <Link to="/menu"><MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon></Link>
+                    <Hamburger/>
                 </MenuLayout>
                 <HeaderLabel>주변의 공유 충전소</HeaderLabel>
                 <ToggleLayout>

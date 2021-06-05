@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +19,10 @@ import Menu from "./component/pages/Menu/index";
 import { UserContext } from "./component/pages/context/UserNameContext";
 import { TokenProvider } from "./component/pages/context/TokenContext";
 import MyPage from "./component/pages/MyPage/index";
-import RegisterUser from "./component/pages/RegisterUser/index"
+import RegisterUser from "./component/pages/RegisterUser/index";
+import ErrorPage from "./component/pages/ErrorPage/index";
+import CheckAuth from "./hoc/CheckAuth";
+
 function App() {
   const [username, setUsername] = useState("default user");
   useEffect(()=>{console.log("appjs ", username); setUsername(localStorage.getItem("username"))}, [localStorage.getItem("username")])
@@ -30,16 +33,17 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             {/* <Route exact path="/login" component={Greeting}/> */}
-            <Route exact path="/map" component={MapView} />
-            <Route exact path="/mycharger" component={MyChargerList} />
-            <Route exact path="/detail" component={ChargerDescription} />
-            <Route exact path="/registercharger" component={RegisterCharger} />
-            <Route exact path="/chat" component={ChattingRoom} />
-            <Route exact path="/payment" component={Payment} />
-            <Route exact path="/menu" component={Menu} />
-            <Route exact path="/mypage" component={MyPage} />
+            <Route exact path="/map" component={CheckAuth(MapView, true)} />
+            <Route exact path="/mycharger" component={CheckAuth(MyChargerList, true)} />
+            <Route exact path="/detail" component={CheckAuth(ChargerDescription, true)} />
+            <Route exact path="/registercharger" component={CheckAuth(RegisterCharger, true)} />
+            <Route exact path="/chat" component={CheckAuth(ChattingRoom, true)} />
+            <Route exact path="/payment" component={CheckAuth(Payment, true)} />
+            <Route exact path="/menu" component={CheckAuth(Menu, true)} />
+            <Route exact path="/mypage" component={CheckAuth(MyPage, true)} />
             <Route exact path="/signup" component={RegisterUser}/>
-            <Route component={() => <Redirect to="/" />} />
+            <Route exact path="/error" component={ErrorPage}/>
+            <Route component={() => <Redirect to="/error" />} />
           </Switch>
         </Router>
       </UserContext.Provider>

@@ -83,6 +83,7 @@ export const FooterLayout = styled.div`
     background-color: white;
     box-shadow: 0 0 20px #aaaaaa;
     gap: 30px;
+    z-index: 1;
 `
 export const SelectLayout = styled.div`
     display: flex;

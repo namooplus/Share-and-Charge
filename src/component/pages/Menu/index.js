@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import firebase from "firebase/app";
 
 import { BaseLayout, HeaderLayout, CloseIcon, ContentLayout, CustomLink } from './components';
@@ -26,4 +27,4 @@ function Menu(props) {
     );
 }
 
-export default Menu;
+export default withRouter(Menu);

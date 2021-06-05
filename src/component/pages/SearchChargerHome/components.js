@@ -19,22 +19,6 @@ export const MenuLayout = styled.div`
     justify-content: space-between;
     align-items: center;
 `
-export const MenuIcon = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    color: black;
-    transition: background-color 500ms;
-
-    &:hover {
-        background-color: lightgray;
-    }
-`
 export const HeaderLabel = styled.h1`
     margin: 0px;
     margin-top: 30px;
