@@ -7,10 +7,21 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ShadowButton from '../../common/ShadowButton';
 
+import axios from 'axios';
+
 function Payment(props) {
-    const paymentData = props.location.state;
-    if (!paymentData)
-        props.history.goBack();
+    // const paymentData = props.location.state;
+    // if (!paymentData)
+    //     props.history.goBack();
+
+    const pay = () => {
+        // 서버에 크레딧 이동 요청
+        // axios.post('~~~~', paymentData);
+        alert('성공적으로 결제되었습니다.');
+
+        // 메인 페이지로 이동
+        props.history.push('/');
+    };
 
     return (
         <BaseLayout>
@@ -41,7 +52,7 @@ function Payment(props) {
                 </Panel>
             </ContentLayout>
             <FooterLayout>
-                <ShadowButton>결제하기</ShadowButton>
+                <ShadowButton onClick={pay}>결제하기</ShadowButton>
             </FooterLayout>
         </BaseLayout>
     );
