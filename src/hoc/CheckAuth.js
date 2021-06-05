@@ -12,13 +12,11 @@ export default function (TargetComponent, option)
     {
         let valid = true;
 
-        useEffect(() => {
-            // 미로그인 사용자가 로그인 사용자용 페이지에 접근
-            if (option == true && (localStorage.getItem('username') == null || localStorage.getItem('token') == null))
-                valid = false;
-            else if (option == false && (localStorage.getItem('username') != null && localStorage.getItem('token') != null))
-                valid = false;
-        }, []);
+        // 미로그인 사용자가 로그인 사용자용 페이지에 접근
+        if (option == true && (localStorage.getItem('username') == null || localStorage.getItem('token') == null))
+            valid = false;
+        else if (option == false && (localStorage.getItem('username') != null && localStorage.getItem('token') != null))
+            valid = false;
 
         return valid ? <TargetComponent/> : <ErrorPage/>;
     }
