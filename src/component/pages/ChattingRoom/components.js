@@ -1,10 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const BaseLayout = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: stretch;
+
     width: 100vw;
     height: 100vh;
 `
