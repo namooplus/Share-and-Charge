@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { BaseLayout, HeaderLayout, BackIcon, HeaderLabel, ContentLayout, Panel, UserLayout, UserIcon, UserLabel, Description, FooterLayout} from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,4 +43,4 @@ function Payment(props) {
   );
 }
 
-export default Payment;
+export default withRouter(Payment);

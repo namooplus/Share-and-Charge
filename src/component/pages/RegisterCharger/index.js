@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { BaseLayout, BackIcon, HeaderLayout, ContentLayout, TitleInput, Description, Input, FooterLayout} from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,4 +35,4 @@ function RegisterCharger(props) {
   );
 }
 
-export default RegisterCharger;
+export default withRouter(RegisterCharger);
