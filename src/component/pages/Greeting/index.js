@@ -32,7 +32,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-var user_email;
+
 function Home() {
   const [user] = useAuthState(auth);
   
@@ -59,7 +59,7 @@ function Greeting(props) {
         var token = credential.accessToken;
 
         // The signed-in user info.
-        user_email = result.user.email;
+        var user_email = result.user.email;
         console.log(user_email);
         console.log(token);
         setName(result.user.email);
