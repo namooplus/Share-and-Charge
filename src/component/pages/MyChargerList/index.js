@@ -35,7 +35,7 @@ function MyChargerList(props) {
             <HeaderLayout>
                 <MenuLayout>
                     <AppIcon width="40px" height="40px"/>
-                    <MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon>
+                    <Link to="/menu"><MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon></Link>
                 </MenuLayout>
                 <HeaderLabel>나의 공유 충전소</HeaderLabel>
             </HeaderLayout>

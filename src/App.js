@@ -9,7 +9,7 @@ import ChargerDescription from './component/pages/ChargerDescription/index';
 import RegisterCharger from './component/pages/RegisterCharger/index';
 import ChattingRoom from './component/pages/ChattingRoom/index';
 import Payment from './component/pages/Payment/index';
-
+import Menu from './component/pages/Menu/index';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/registercharger" component={RegisterCharger}/>
         <Route exact path="/chat" component={ChattingRoom}/>
         <Route exact path="/payment" component={Payment}/>
+        <Route exact path="/menu" component={Menu}/>
         <Route component={() => <Redirect to="/"/>} />
       </Switch>
     </Router>
