@@ -56,8 +56,16 @@ function ChargerDescription(props) {
             props.history.push({
                 pathname: "/chat",
                 state: {
-                    startTime: startTime,
-                    endTime: endTime
+                    provider: {
+                        id: "kyle"
+                    },
+                    customer: {
+                        id: "namoo"
+                    },
+                    charger : {
+                        startTime: startTime,
+                        endTime: endTime
+                    }
                 }
             });
         }
