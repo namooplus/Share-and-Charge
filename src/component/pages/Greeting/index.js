@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -18,7 +18,8 @@ import ShadowButton from "../../common/ShadowButton";
 import AppIcon from "../../common/AppIcon";
 
 import SearchChargerHome from "../SearchChargerHome/index";
-
+import {UserContext} from "../context/UserNameContext";
+import {TokenContext} from "../context/TokenContext";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCRXuDZ7uqMRsuGm-EiT6dW0n636bf-VwA",
@@ -31,15 +32,20 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-
+var user_email;
 function Home() {
   const [user] = useAuthState(auth);
-
-  return <>{user ? <SearchChargerHome auth={auth}/>:<Greeting /> }</>;
+  
+  return <>{user ? <SearchChargerHome auth={auth} /> : <Greeting />}</>;
 }
 
 // cookies.set(key2, value2, {secure: true, sameSite: 'none'});
 function Greeting(props) {
+  const {setUsername } = useContext(UserContext);
+  const {username} = useContext(UserContext);
+  const { setToken } = useContext(TokenContext);
+  const [uname, setName] = useState("");
+  const [t, setT] = useState("");
   const onSubmit = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     console.log(provider);
@@ -53,19 +59,24 @@ function Greeting(props) {
         var token = credential.accessToken;
 
         // The signed-in user info.
-        var user_email = result.user.email;
+        user_email = result.user.email;
         console.log(user_email);
         console.log(token);
-        // ...
+        setName(result.user.email);
+        setUsername(result.user.email);
+       
       })
       .catch((error) => {
         console.log(error);
-        // ...
       });
   };
   const click = () => {
     console.log("click");
   };
+  useEffect(() => {console.log("email,"+uname);}, [uname])
+  
+  useEffect(()=>{console.log("changed name ", username)}, [username])
+  
   return (
     <BaseLayout>
       <SplashLayout>

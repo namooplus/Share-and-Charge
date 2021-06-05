@@ -1,6 +1,21 @@
-import React from 'react';
+import React from "react";
+import { SendBirdProvider, withSendBird } from "sendbird-uikit";
+import { App as SendBirdApp } from "sendbird-uikit";
+import "sendbird-uikit/dist/index.css";
 
-import { BaseLayout, HeaderLayout, BackIcon, HeaderLabel, ContentLayout, MyChat, YourChat, FooterLayout, Input, SendIcon } from './components';
+import "sendbird-uikit/dist/index.css";
+import {
+  BaseLayout,
+  HeaderLayout,
+  BackIcon,
+  HeaderLabel,
+  ContentLayout,
+  MyChat,
+  YourChat,
+  FooterLayout,
+  Input,
+  SendIcon,
+} from "./components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +23,12 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 function ChattingRoom(props) {
   return (
     <BaseLayout>
-        <HeaderLayout>
+      <SendBirdApp
+        // Add the two lines below.
+        appId={"261DB632-487D-4E3C-922F-6D453A33B82D"} // Specify your Sendbird application ID.
+        userId={"mapoout"} // Specify your user ID.
+      />
+      {/* <HeaderLayout>
             <BackIcon><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
             <HeaderLabel>OO와의 채팅</HeaderLabel>
         </HeaderLayout>
@@ -19,7 +39,7 @@ function ChattingRoom(props) {
         <FooterLayout>
             <Input placeholder="메시지를 입력하세요"/>
             <SendIcon><FontAwesomeIcon icon={faPaperPlane}/></SendIcon>
-        </FooterLayout>
+        </FooterLayout> */}
     </BaseLayout>
   );
 }
