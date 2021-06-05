@@ -35,7 +35,7 @@ const auth = firebase.auth();
 function Home() {
   const [user] = useAuthState(auth);
 
-  return <>{user ? <SearchChargerHome />:<Greeting /> }</>;
+  return <>{user ? <SearchChargerHome auth={auth}/>:<Greeting /> }</>;
 }
 
 // cookies.set(key2, value2, {secure: true, sameSite: 'none'});

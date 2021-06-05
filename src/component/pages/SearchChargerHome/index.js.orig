@@ -46,7 +46,7 @@ function SearchChargerHome(props) {
             <HeaderLayout>
                 <MenuLayout>
                     <AppIcon width="40px" height="40px"/>
-                    <Link to="/menu"><MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon></Link>
+                    <MenuIcon><FontAwesomeIcon icon={faBars}/></MenuIcon>
                 </MenuLayout>
                 <HeaderLabel>주변의 공유 충전소</HeaderLabel>
                 {/* logout button example 배치랑 디자인은 알아서  */}
