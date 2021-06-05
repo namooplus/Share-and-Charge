@@ -26,6 +26,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Chat from "./Chat/Index.js"
+import {ViewContext} from "./Chat/ViewContext"
 const appId = "261DB632-487D-4E3C-922F-6D453A33B82D";
 const userId = localStorage.getItem("username");
 const channelUrl = "mapoout_kyle";
@@ -145,13 +146,29 @@ const channelUrl = "mapoout_kyle";
 //   </SendBirdProvider>
 // );
 function ChattingRoom(props) {
-  var userIds = ["John", "mapoout"];
   const [config, setconfig] = useState({});
+  const [view, toggleview] = useState(true);
+  
+  // const sdk = sendBirdSelectors.getSdk();
+  // let params = new sdk.GroupChannelParams();
+  //         params.isPublic = false;
+  //         params.isEphemeral = false;
+  //         params.isDistinct = false;
+  //         params.addUserIds(["kyle"]);
+  //         params.name = userId;
+  //         createChannel(params)
+  //           .then((c) => {
+  //             setChannelUrl("mapoout_kyle");
+  //           })
+  //           .catch((c) => console.warn(c));
   return (
     <BaseLayout>
+    <ViewContext.Provider value={{view, toggleview}}>
       {/* <ChannelCRUDSelectors />
       <MyComponent/> */}
-      <Chat userId={"mapoout"} nickname={"mapoout"} />
+      <Chat userId={userId} nickname={userId}  />
+
+    </ViewContext.Provider>
     </BaseLayout>
   );
 }

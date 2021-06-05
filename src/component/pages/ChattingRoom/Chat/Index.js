@@ -1,6 +1,6 @@
 import './index.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   SendBirdProvider,
@@ -13,12 +13,18 @@ import 'sendbird-uikit/dist/index.css';
 import ChannelPreview from './ChannelPreview';
 import Message from './Message';
 import getCustomPaginatedQuery from './CustomUserList';
-
-export default function Chat({ userId, theme, nickname, useCustomQuery }) {
+import {ViewContext} from "./ViewContext"
+export default function Chat({ userId, theme, nickname, useCustomQuery}) {
   
   const [showSettings, setShowSettings] = useState(false);
   const [currentChannelUrl, setCurrentChannelUrl] = useState(null);
-
+  console.log(ViewContext);
+  console.log(useContext(ViewContext));
+  const {view, toggleview} = useContext(ViewContext);
+  const changeView = ()=>{
+    if (view) toggleview(false);
+    else toggleview(true);
+  }
   return (
     <div style={{ height: '100vh' }}>
       <SendBirdProvider
@@ -42,8 +48,11 @@ export default function Chat({ userId, theme, nickname, useCustomQuery }) {
                 }
               }}
             />
+          <button onClick={changeView}>channel</button>
           </div>
-          <div className="sendbird-app__conversation-wrap">
+          <div className="sendbird-app__conversation-wrap" style={{transform: view? "translateX(0)":"translateX(100vw)"}}>
+          <button onClick={changeView}>channel</button>
+
             <Channel
               renderChatItem={Message}
               channelUrl={currentChannelUrl}
