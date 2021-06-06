@@ -12,10 +12,10 @@ import { DOMAIN } from '../../../util/domain';
 
 function MyChargerList(props) {
     const [myChargerList, setMyChargerList] = useState([0]);
-    
+
     useEffect(() => {
         // 나의 공유 충전소 리스트 요청
-        // axios.get(`/user/${localStorage.getItem('username')}`)
+        // axios.get(`{DOMAIN}/mypage/${localStorage.getItem('username')}`)
         axios.get('./tempData/myChargerList.json')
         // 나의 공유 충전소 리스트 출력
         .then(res => {
