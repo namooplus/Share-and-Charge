@@ -51,7 +51,7 @@ function MyChargerList(props) {
                                 <ShadowCard
                                     chargerImage={data.image_src}
                                     chargerTitle={`${data.region_1depth_name} ${data.region_2depth_name} ${data.region_3depth_name}`}
-                                    chargerDescription={`${(data.distance_from * 10).toFixed(1)}km | 시간 당 ${data.price_per_hour}원 | ${data.start_time}~${data.end_time}`}
+                                    chargerDescription={`시간 당 ${data.price_per_hour}원 | ${data.available[0]}시 ~ ${data.available[data.available.length-1] + 1}시`}
                                     type="self"/>                                
                             </Link>     
                         )

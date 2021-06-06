@@ -43,6 +43,33 @@ function ChargerDescription(props) {
     const handleEndTimeChange = (event) => {
         setEndTime(parseInt(event.target.value));
     };
+
+    const convertArrayToRange = () => {
+        let timeRange = "";
+        let prev;
+
+        for (let i in chargerData.available)
+        {
+            let cur = chargerData.available[i];
+
+            if (i == 0)
+            {
+                prev = cur;
+                timeRange += (cur + "시");
+                continue;
+            }
+            if (cur = prev + 1)
+            {
+                prev = cur;
+                continue;
+            }
+
+            
+        }
+
+        return null;
+    }
+
     const requestShare = () => {
         if (startTime > endTime)
             alert('종료 시간이 시작 시간보다 빠를 수 없습니다.');
@@ -76,7 +103,7 @@ function ChargerDescription(props) {
                     <br/>
                     가격 : 시간 당 {chargerData.price_per_hour}원
                     <br/>
-                    사용가능시간 : {chargerData.time}
+                    사용가능시간 : {convertArrayToRange()}
                 </Description>
                 <Map id="charger-map-detail"/>
             </ContentLayout>
