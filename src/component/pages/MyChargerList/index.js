@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { BaseLayout, HeaderLayout, MenuLayout, HeaderLabel, ContentLayout, FooterLayout } from './components';
 import Hamburger from '../../common/Hamburger';
-import ShadowCard from '../../common/ShadowCard';
+import ShadowCardLive from './ShadowCardLive';
 import ShadowButton from '../../common/ShadowButton';
 import AppIcon from '../../common/AppIcon';
 
@@ -41,20 +41,7 @@ function MyChargerList(props) {
                     else if (data === 1)
                         return <div style={{textAlign: 'center'}}>오류 : 나의 공유 충전소를 불러올 수 없습니다!</div>
                     else
-                        return (
-                            <Link 
-                                style={{textDecoration: "none", color: "inherit"}} 
-                                to={{
-                                    pathname: "/detail",
-                                    state: data
-                                }}>
-                                <ShadowCard
-                                    chargerImage={data.image_src}
-                                    chargerTitle={`${data.region_1depth_name} ${data.region_2depth_name} ${data.region_3depth_name}`}
-                                    chargerDescription={`시간 당 ${data.price_per_hour}원 | ${data.available[0]}시 ~ ${data.available[data.available.length-1] + 1}시`}
-                                    type="self"/>                                
-                            </Link>     
-                        )
+                        return <ShadowCardLive chargerData={data}/> 
                 })}
             </ContentLayout>
             <FooterLayout>
