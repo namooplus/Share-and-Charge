@@ -48,6 +48,8 @@ function RegisterUser({ setLoginServer }) {
 
     const registerSubmit = () => {
         setLoginServer(true);
+        localStorage.setItem("username", localStorage.getItem("temp_username"));
+        localStorage.removeItem("temp_username");
     };
     return (
         <Container component="main" maxWidth="xs">

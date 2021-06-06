@@ -41,14 +41,14 @@ function Home() {
                     setLoginServer(true);
                     console.log("login success");
                     console.log(res.data.response);
+                } else {
+                    setLoginServer(false);
+                    console.log("unregistered user");
                     localStorage.setItem(
                         "temp_username",
                         localStorage.getItem("username")
                     );
                     localStorage.removeItem("username");
-                } else {
-                    setLoginServer(false);
-                    console.log("unregistered user");
                 }
             });
         }
