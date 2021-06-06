@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
 } from "react-router-dom";
 
 import Home from "./component/pages/Greeting/index";
@@ -24,31 +24,71 @@ import ErrorPage from "./component/pages/ErrorPage/index";
 import CheckAuth from "./hoc/CheckAuth";
 
 function App() {
-  const [username, setUsername] = useState("default user");
-  useEffect(()=>{console.log("appjs ", username); setUsername(localStorage.getItem("username"))}, [localStorage.getItem("username")])
-  return (
-    <TokenProvider>
-      <UserContext.Provider value={{username, setUsername}}>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            {/* <Route exact path="/login" component={Greeting}/> */}
-            <Route exact path="/map" component={CheckAuth(MapView, true)} />
-            <Route exact path="/mycharger" component={CheckAuth(MyChargerList, true)} />
-            <Route exact path="/detail" component={CheckAuth(ChargerDescription, true)} />
-            <Route exact path="/registercharger" component={CheckAuth(RegisterCharger, true)} />
-            <Route exact path="/chat" component={CheckAuth(ChattingRoom, true)} />
-            <Route exact path="/payment" component={CheckAuth(Payment, true)} />
-            <Route exact path="/menu" component={CheckAuth(Menu, true)} />
-            <Route exact path="/mypage" component={CheckAuth(MyPage, true)} />
-            <Route exact path="/signup" component={RegisterUser}/>
-            <Route exact path="/error" component={ErrorPage}/>
-            <Route component={() => <Redirect to="/error" />} />
-          </Switch>
-        </Router>
-      </UserContext.Provider>
-    </TokenProvider>
-  );
+    const [username, setUsername] = useState("default user");
+    useEffect(() => {
+        console.log("appjs ", username);
+        setUsername(localStorage.getItem("username"));
+    }, [localStorage.getItem("username")]);
+    return (
+        <TokenProvider>
+            <UserContext.Provider value={{ username, setUsername }}>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        {/* <Route exact path="/login" component={Greeting}/> */}
+                        <Route
+                            exact
+                            path="/map"
+                            component={CheckAuth(MapView, true)}
+                        />
+                        <Route
+                            exact
+                            path="/mycharger"
+                            component={CheckAuth(MyChargerList, true)}
+                        />
+                        <Route
+                            exact
+                            path="/detail"
+                            component={CheckAuth(ChargerDescription, true)}
+                        />
+                        <Route
+                            exact
+                            path="/registercharger"
+                            component={CheckAuth(RegisterCharger, true)}
+                        />
+                        <Route
+                            exact
+                            path="/chat"
+                            component={CheckAuth(ChattingRoom, true)}
+                        />
+                        <Route
+                            exact
+                            path="/mychat"
+                            component={CheckAuth(ChattingRoom, true)}
+                        />
+                        <Route
+                            exact
+                            path="/payment"
+                            component={CheckAuth(Payment, true)}
+                        />
+                        <Route
+                            exact
+                            path="/menu"
+                            component={CheckAuth(Menu, true)}
+                        />
+                        <Route
+                            exact
+                            path="/mypage"
+                            component={CheckAuth(MyPage, true)}
+                        />
+                        <Route exact path="/signup" component={RegisterUser} />
+                        <Route exact path="/error" component={ErrorPage} />
+                        <Route component={() => <Redirect to="/error" />} />
+                    </Switch>
+                </Router>
+            </UserContext.Provider>
+        </TokenProvider>
+    );
 }
 
 export default App;
