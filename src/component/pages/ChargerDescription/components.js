@@ -44,22 +44,10 @@ export const Title = styled.h1`
     margin: 0px;
     font-size: 1.5rem;
 `
-export const UserLayout = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    margin-top: 15px;
-`
-export const UserIcon = styled.div`
-    width: 25px;
-    height: 25px;
-    background-color: gray;
-    border-radius: 50%;
-`
 export const UserLabel = styled.span`
     font-size: 0.8rem;
     font-weight: 400;
-    margin-left: 10px;
+    margin-top: 10px;
 `
 export const Description = styled.p`
     margin: 0px;

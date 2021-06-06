@@ -2,25 +2,23 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLayout, UserIcon, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
+import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
 import ShadowSelector from '../../common/ShadowSelector';
 import ShadowButton from '../../common/ShadowButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
-import tempChargerImage from '../../../img/temp-charger-image.png';
 
 function ChargerDescription(props) {
     const chargerData = props.location.state;
     if (!chargerData)
         props.history.goBack();
     
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [startTime, setStartTime] = useState(0);
+    const [endTime, setEndTime] = useState(0);
 
     useEffect(() => {
         // 충전소 위치 지도 표시
-        const location = new kakao.maps.LatLng(chargerData.position.latitude, chargerData.position.longitude);
+        const location = new kakao.maps.LatLng(chargerData.y, chargerData.x);
         let container = document.getElementById('charger-map-detail');
         let options = {
             center: location,
@@ -35,8 +33,8 @@ function ChargerDescription(props) {
         marker.setMap(map);
 
         // 예약 시간 설정
-        setStartTime(chargerData.time.split('~')[0]);
-        setEndTime(chargerData.time.split('~')[1]);
+        setStartTime(12);
+        setEndTime(14);
     }, []);
 
     const handleStartTimeChange = (event) => {
@@ -75,30 +73,24 @@ function ChargerDescription(props) {
         <BaseLayout>
             <BackIcon onClick={props.history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
             <HeaderLayout>
-                <Image src={tempChargerImage}/>
+                <Image src={chargerData.image_src}/>
             </HeaderLayout>
             <ContentLayout>
-                <Title>{chargerData.name}</Title>
-                <UserLayout>
-                    <UserIcon/>
-                    <UserLabel>{chargerData.user}</UserLabel>
-                </UserLayout>
+                <Title>{`${chargerData.region_1depth_name} ${chargerData.region_2depth_name} ${chargerData.region_3depth_name}`}</Title>
+                <UserLabel>{chargerData.owner_name}</UserLabel>
                 <Description>
-                    위치 : {chargerData.location}
+                    위치 : {chargerData.address_name}
                     <br/>
-                    가격 : 시간 당 {chargerData.price}
+                    가격 : 시간 당 {chargerData.price_per_hour}원
                     <br/>
                     사용가능시간 : {chargerData.time}
-                    <br/>
-                    충전소 정보 : {chargerData.chargeinfo}
-                    <br/>
-                    공유자 메모 : {chargerData.memo}
                 </Description>
                 <Map id="charger-map-detail"/>
             </ContentLayout>
             {/* 자신의 충전소일 경우 공유 요청 레이아웃 숨기기 */}
             {
-                chargerData.user_email != localStorage.getItem('username') ? (
+                // localStorage.getItem('username')
+                chargerData.email != "corona20@gmail.com" ? (
                     <FooterLayout>
                         <SelectLayout>
                             <ShadowSelector value={startTime} onChange={handleStartTimeChange} />
@@ -109,7 +101,6 @@ function ChargerDescription(props) {
                     </FooterLayout>
                 ) : null
             }
-            
         </BaseLayout>
     );
 }

@@ -8,21 +8,16 @@ import AppIcon from '../../common/AppIcon';
 
 import axios from 'axios';
 
-import tempChargerImage from '../../../img/temp-charger-image.png';
-
 function SearchChargerHome(props) {
     const [chargerList, setChargerList] = useState([0]);
 
     const successGet = (position) => {
         // 주변의 공유 충전소 리스트 요청
-        // axios.post('/api/chargeList', {
-        //     latitude: position.coords.latitude,
-        //     longitude: position.coords.longitude
-        // })
+        // axios.get(`/current/${position.coords.latitude}/${position.coords.longitude}`)
         axios.get('./tempData/chargerList.json')
         // 주변의 공유 충전소 리스트 출력
         .then(res => {
-            setChargerList(res.data);
+            setChargerList(res.data.chargers_near);
         })
         .catch(err => {
             setChargerList([1]);
@@ -68,11 +63,10 @@ function SearchChargerHome(props) {
                                     state: data
                                 }}>
                                 <ShadowCard
-                                    chargerImage={tempChargerImage}
-                                    chargerTitle={data.name}
-                                    chargerDescription={`${data.distance_from} | ${data.price} | ${data.time}`}
-                                    chargerUserIcon
-                                    chargerUserLabel={data.user}/>
+                                    chargerImage={data.image_src}
+                                    chargerTitle={`${data.region_1depth_name} ${data.region_2depth_name} ${data.region_3depth_name}`}
+                                    chargerDescription={`${(data.distance_from * 10).toFixed(1)}km | 시간 당 ${data.price_per_hour}원 | ${data.start_time}~${data.end_time}`}
+                                    chargerUserLabel={data.owner_name}/>
                             </Link>
                         )
                 })}

@@ -8,11 +8,7 @@ function ShadowCard(props) {
         <DescriptionLayout>
             <Title>{props.chargerTitle}</Title>
             <Subtitle>{props.chargerDescription}</Subtitle>
-            { props.type !== "self" ? 
-            (<UserLayout>
-                <UserIcon icon={props.chargerUserIcon}/>
-                <UserLabel>{props.chargerUserLabel}</UserLabel>
-            </UserLayout>) : null } 
+            { props.type !== "self" ? <UserLabel>{props.chargerUserLabel}</UserLabel> : null } 
         </DescriptionLayout>
     </Card>
   );
@@ -45,23 +41,9 @@ const Title = styled.h2`
 const Subtitle = styled.h3`
     font-size: 0.8rem;
     font-weight: 400;
-    margin: 0;
-    margin-top: 7px;
-`
-const UserLayout = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    margin-top: 7px;
-`
-const UserIcon = styled.div`
-    width: 25px;
-    height: 25px;
-    background-color: gray;
-    border-radius: 50%;
+    margin: 7px 0;
 `
 const UserLabel = styled.span`
     font-size: 0.8rem;
     font-weight: 400;
-    margin-left: 10px;
 `

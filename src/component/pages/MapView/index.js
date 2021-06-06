@@ -20,8 +20,8 @@ function MapView(props) {
         {
             var marker = new kakao.maps.Marker({
                 map: map,
-                title: charger.name,
-                position: new kakao.maps.LatLng(charger.position.latitude, charger.position.longitude),
+                title: charger.address_name,
+                position: new kakao.maps.LatLng(parseFloat(charger.y), parseFloat(charger.x)),
                 clickable: true
             });
             kakao.maps.event.addListener(marker, 'click', function() {
@@ -34,14 +34,11 @@ function MapView(props) {
     }
     const successGet = (position) => {
         // 주변의 공유 충전소 리스트 요청
-        // axios.post('/api/chargeList', {
-        //     latitude: position.coords.latitude,
-        //     longitude: position.coords.longitude
-        // })
+        // axios.get(`/current/${position.coords.latitude}/${position.coords.longitude}`)
         axios.get('./tempData/chargerList.json')
         // 주변의 공유 충전소 리스트 출력
         .then(res => {
-            const chargerData = res.data;
+            const chargerData = res.data.chargers_near;
             setChargerList(chargerData);
 
             // 지도 표시

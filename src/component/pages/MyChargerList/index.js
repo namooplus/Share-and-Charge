@@ -9,20 +9,16 @@ import AppIcon from '../../common/AppIcon';
 
 import axios from 'axios';
 
-import tempChargerImage from '../../../img/temp-charger-image.png';
-
 function MyChargerList(props) {
     const [myChargerList, setMyChargerList] = useState([0]);
 
     useEffect(() => {
         // 나의 공유 충전소 리스트 요청
-        // axios.post('/api/myChargerList', {
-        //     user_email: ...
-        // })
+        // axios.get(`/user/${localStorage.getItem('username')}`)
         axios.get('./tempData/myChargerList.json')
         // 나의 공유 충전소 리스트 출력
         .then(res => {
-            setMyChargerList(res.data);
+            setMyChargerList(res.data.chargers_user);
         })
         .catch(err => {
             setMyChargerList([1]);
@@ -53,9 +49,9 @@ function MyChargerList(props) {
                                     state: data
                                 }}>
                                 <ShadowCard
-                                    chargerImage={tempChargerImage}
-                                    chargerTitle={data.name}
-                                    chargerDescription={`${data.distance_from} | ${data.price} | ${data.time}`}
+                                    chargerImage={data.image_src}
+                                    chargerTitle={`${data.region_1depth_name} ${data.region_2depth_name} ${data.region_3depth_name}`}
+                                    chargerDescription={`${(data.distance_from * 10).toFixed(1)}km | 시간 당 ${data.price_per_hour}원 | ${data.start_time}~${data.end_time}`}
                                     type="self"/>                                
                             </Link>     
                         )
