@@ -48,7 +48,7 @@ const CustomComponent = ({
                 params.isPublic = false;
                 params.isEphemeral = false;
                 params.isDistinct = false;
-                params.addUserIds([providerId, "mapoout@yonsei.ac.kr"]);
+                params.addUserIds([providerId, "mapoout@yonsei.ac.kr", "km1059ks@gmail.com", "minsme@yonsei.ac.kr"]);
                 params.name = url_list[i];
                 createChannel(params)
                   .then((c) => {

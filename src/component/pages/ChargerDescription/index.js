@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { BaseLayout, BackIcon, HeaderLayout, Image, ContentLayout, Title, UserLabel, Description, Map, FooterLayout, SelectLayout } from './components';
-import ShadowSelector from '../../common/ShadowSelector';
+import ShadowPicker from '../../common/ShadowPicker';
 import ShadowButton from '../../common/ShadowButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +22,7 @@ function ChargerDescription(props) {
         let container = document.getElementById('charger-map-detail');
         let options = {
             center: location,
-            level: 3
+            level: 2
         };
         const map = new kakao.maps.Map(container, options);
 
@@ -38,10 +38,10 @@ function ChargerDescription(props) {
     }, []);
 
     const handleStartTimeChange = (event) => {
-        setStartTime(event.target.value);
+        setStartTime(parseInt(event.target.value));
     };
     const handleEndTimeChange = (event) => {
-        setEndTime(event.target.value);
+        setEndTime(parseInt(event.target.value));
     };
     const requestShare = () => {
         if (startTime > endTime)
@@ -50,19 +50,12 @@ function ChargerDescription(props) {
             alert('시작 시간과 종료 시간이 같을 수 없습니다.');
         else
         {
-            alert(`${startTime}~${endTime}으로 예약 요청합니다.`);
+            alert(`${startTime}시 ~${endTime}시로 예약 요청합니다.`);
             props.history.push({
                 pathname: "/chat",
                 state: {
                     provider: {
                         id: "kyle"
-                    },
-                    customer: {
-                        id: "namoo"
-                    },
-                    charger : {
-                        startTime: startTime,
-                        endTime: endTime
                     }
                 }
             });
@@ -93,9 +86,9 @@ function ChargerDescription(props) {
                 chargerData.email != "corona20@gmail.com" ? (
                     <FooterLayout>
                         <SelectLayout>
-                            <ShadowSelector value={startTime} onChange={handleStartTimeChange} />
-                            ~
-                            <ShadowSelector value={endTime} onChange={handleEndTimeChange}/>
+                            <ShadowPicker value={startTime} onChange={handleStartTimeChange}/>
+                            &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
+                            <ShadowPicker value={endTime} onChange={handleEndTimeChange}/>
                         </SelectLayout>
                         <ShadowButton onClick={requestShare}>요청하기</ShadowButton>
                     </FooterLayout>

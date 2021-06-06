@@ -36,6 +36,7 @@ export const ContentLayout = styled.div`
     flex-flow: column nowrap;
     align-items: stretch;
     padding: 30px 30px 138px 30px;
+    gap: 20px;
 `
 export const TitleInput = styled.input`
     border:none;
@@ -46,19 +47,40 @@ export const TitleInput = styled.input`
         outline: none;
     }
 `
-export const Description = styled.p`
-    margin: 0px;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    line-height: 2rem;
+export const EachLayout = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+`
+export const Label = styled.label`
+    font-size: 1rem;
 `
 export const Input = styled.input`
+    flex: 1 1 0;
     border:none;
     border-bottom: 1px solid black;
     font-size: 0.9rem;
+    text-align: right;
 
     &:focus {
         outline: none;
+    }
+`
+export const Map = styled.div`
+    height: 230px;
+    background-color: lightgray;
+`
+export const Button = styled.button`
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0 10px lightgray;
+    font-size: 0.9rem;
+    transition: background-color 500ms;
+
+    &:hover {
+        background-color: lightgray;
     }
 `
 export const FooterLayout = styled.div`
