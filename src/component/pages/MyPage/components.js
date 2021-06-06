@@ -1,28 +1,37 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
-export const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  padding: 2rem;
-  flex-direction: column;
-  
-`;
-export const Profile = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 1rem;
-`;
-export const Credit = styled.div`
-  font-size: 3rem;
-  margin-left: 4rem;
-`;
-export const UserImage = styled.img`
-    width : 5rem;
-    border-radius: 5rem;
-`;
-export const UserName = styled.div`
+export const BaseLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+`
+export const HeaderLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+    padding: 30px 30px 0 30px;
+`
+export const MenuLayout = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+`
+export const HeaderLabel = styled.h1`
+    margin: 0px;
+    margin-top: 30px;
     font-size: 1.5rem;
-
+`
+export const ContentLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    padding: 30px;
+    gap: 30px;
+`
+export const SubLabel = styled.h2`
+    margin: 0;
+    font-size: 1.3rem;
 `

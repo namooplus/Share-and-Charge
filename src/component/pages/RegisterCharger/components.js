@@ -27,6 +27,9 @@ export const BackIcon = styled.div`
     }
 `
 export const HeaderLayout = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 150px;
     padding: 30px;
     background-color: lightgray;

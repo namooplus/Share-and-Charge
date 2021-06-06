@@ -11,6 +11,7 @@ import ShadowPicker from '../../common/ShadowPicker';
 import axios from 'axios';
 
 function RegisterCharger(props) {
+  // const [image, setImage] = useState(null);
   const [address, setAddress] = useState("");
   const [addressA, setAddressA] = useState("");
   const [addressB, setAddressB] = useState("");
@@ -95,7 +96,7 @@ function RegisterCharger(props) {
     <BaseLayout>
         <BackIcon onClick={props.history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
         <HeaderLayout>
-            
+          {/* <input type="file"/> */}
         </HeaderLayout>
         <ContentLayout>
           <EachLayout>
