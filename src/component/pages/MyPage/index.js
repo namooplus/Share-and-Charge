@@ -39,22 +39,6 @@ function MyPage(props) {
       });
       setRequestedList(requestedListTemp);
     };
-        // .then(() => {
-        //   setRequestedList(totalRequestList);
-        //   console.log('어우');
-        //   console.log(totalRequestList.length)
-        // })
-        // .catch(err => {
-        //     setRequestedList([1]);
-        // });
-    // const getRequestingList = () => {
-    //   // axios.get('/checkForOwner/${localStorage.getItem('username')}')
-    //   axios.get('./tempData/myChargerList.json')
-    //     .then(res => {
-    //     })
-    //     .catch(err => {
-    //     });
-    // };
 
     useEffect(() => {
       checkRequestedList();
@@ -71,7 +55,6 @@ function MyPage(props) {
             </HeaderLayout>
             <ContentLayout>
                <span>{localStorage.getItem('username')}</span>
-              <SubLabel>나의 충전소에 들어온 요청 내역</SubLabel>
               {requestedList.map((data) => {
                 console.log(data.chargerKey);
                 return (

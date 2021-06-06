@@ -36,13 +36,15 @@ function Home() {
 
     useEffect(() => {
         if (!loginServer) {
-            axios.get("tempData/login_request_false.json").then((res) => {
-                if (res.data.response !== "false") {
+            axios.get("http://1d829d6cab88.ngrok.io/login?email="+localStorage.getItem("username")).then((res) => {
+                console.log("*****"+JSON.stringify(res.data));
+                if (res.data.result !== "no") {
                     setLoginServer(true);
                     console.log("login success");
                     console.log(res.data.response);
                 } else {
                     setLoginServer(false);
+                    console.log(res.data);
                     console.log("unregistered user");
                     localStorage.setItem(
                         "temp_username",
