@@ -46,28 +46,26 @@ function ChargerDescription(props) {
 
     const convertArrayToRange = () => {
         let timeRange = "";
-        let prev;
+        let startPoint = 0;
+        let prev = chargerData.available[0];
 
         for (let i in chargerData.available)
         {
+            if (i == 0) continue;
             let cur = chargerData.available[i];
-
-            if (i == 0)
-            {
-                prev = cur;
-                timeRange += (cur + "시");
-                continue;
-            }
-            if (cur = prev + 1)
-            {
-                prev = cur;
-                continue;
-            }
-
             
-        }
+            // split point
+            if (cur > prev + 1)
+            {
+                timeRange += `${chargerData.available[startPoint]}시 ~ ${chargerData.available[i - 1] + 1}시, `;
+                startPoint = i;
+            }
 
-        return null;
+            prev = cur;
+        }
+        timeRange += `${chargerData.available[startPoint]}시 ~ ${chargerData.available[chargerData.available.length - 1] + 1}시`;
+
+        return timeRange;
     }
 
     const requestShare = () => {
