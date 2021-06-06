@@ -10,6 +10,7 @@ import {
 import { App as SendBirdApp } from "sendbird-uikit";
 import "sendbird-uikit/dist/index.css";
 import SendBird from "sendbird";
+import {useLocation} from "react-router-dom"
 import {
   BaseLayout,
   HeaderLayout,
@@ -161,12 +162,15 @@ function ChattingRoom(props) {
   //             setChannelUrl("mapoout_kyle");
   //           })
   //           .catch((c) => console.warn(c));
+  const location = useLocation();
+  console.log(location)
+  localStorage.setItem("providerId", location.state.provider.id);
   return (
     <BaseLayout>
     <ViewContext.Provider value={{view, toggleview}}>
       {/* <ChannelCRUDSelectors />
       <MyComponent/> */}
-      <Chat userId={userId} nickname={userId}  />
+      <Chat userId={userId} nickname={userId} providerId = {location.state.provider.id} />
 
     </ViewContext.Provider>
     </BaseLayout>
