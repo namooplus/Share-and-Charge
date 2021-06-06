@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { BaseLayout, BackIcon, HeaderLayout, ContentLayout, EachLayout, Label, Map, Input, Button, FooterLayout} from './components';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo } from "@fortawesome/free-solid-svg-icons";
+import FileUploader from '../../common/FileUploader';
 import ShadowButton from '../../common/ShadowButton';
 import ShadowPicker from '../../common/ShadowPicker';
 
@@ -12,7 +13,7 @@ import axios from 'axios';
 import { DOMAIN } from '../../../util/domain';
 
 function RegisterCharger(props) {
-  // const [imageURL, setImageURL] = useState(null);
+  const [imageURL, setImageURL] = useState(null);
   const [address, setAddress] = useState("");
   const [addressA, setAddressA] = useState("");
   const [addressB, setAddressB] = useState("");
@@ -61,8 +62,46 @@ function RegisterCharger(props) {
         setAddressB('');
         setAddressC('');
       }
-  });   
+    });   
   };
+
+  const handleFile = (image) => {
+    if (image && image.size < 5000000)
+    {
+      const formData = new FormData();
+      formData.append('image', image);
+      axios.post('https://api.imgur.com/3/image', formData, {
+        headers: {
+          Authorization: "Client-ID 1807fa16af23099",
+          Accept: "application/json"
+        }
+      })
+      .then((res) => {
+        const result = res.data;
+
+        if (result.success)
+        {
+          console.log(result.data.link);
+          setImageURL(result.data.link);
+          alert('사진 업로드에 성공하였습니다.');
+        }
+        else
+        {
+          setImageURL(null);
+          alert('사진 업로드에 실패하였습니다.');
+        }
+      })
+      .catch((err) => {
+        setImageURL(null);
+        alert('사진 업로드에 실패하였습니다.' + err.message);
+      });
+    }
+    else
+    {
+      setImageURL(null);
+      alert('허용 가능한 파일 용량을 초과하였습니다.');
+    }
+  }
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
   };
@@ -78,7 +117,7 @@ function RegisterCharger(props) {
   
   const registerNewCharger = () => {
     // 충전소 정보 validation 확인
-    if (address == '' || addressA == '' || addressB == '' || addressC == ''
+    if (imageURL == null || address == '' || addressA == '' || addressB == '' || addressC == ''
       || latitude == null || longitude == null || price == '' || startTime >= endTime)
       {
         alert('충전소 정보가 모두 작성되지 않았거나 올바르지 않은 형식의 정보가 있습니다.');
@@ -102,7 +141,7 @@ function RegisterCharger(props) {
     <BaseLayout>
         <BackIcon onClick={props.history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></BackIcon>
         <HeaderLayout>
-          {/* <input type="file"/> */}
+          <FileUploader handleFile={handleFile}/>
         </HeaderLayout>
         <ContentLayout>
           <EachLayout>
