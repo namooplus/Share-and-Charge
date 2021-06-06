@@ -7,13 +7,14 @@ import ShadowCard from '../../common/ShadowCard';
 import AppIcon from '../../common/AppIcon';
 
 import axios from 'axios';
+import { DOMAIN } from '../../../util/domain';
 
 function SearchChargerHome(props) {
     const [chargerList, setChargerList] = useState([0]);
 
     const successGet = (position) => {
         // 주변의 공유 충전소 리스트 요청
-        // axios.get(`/current/${position.coords.latitude}/${position.coords.longitude}`)
+        // axios.get(`{DOMAIN}/current/${position.coords.latitude}/${position.coords.longitude}`)
         axios.get('./tempData/chargerList.json')
         // 주변의 공유 충전소 리스트 출력
         .then(res => {

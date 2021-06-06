@@ -3,24 +3,25 @@ import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import { DOMAIN } from '../../../util/domain';
 
 function ShadowCardLive(props) {
     const [userRequest, setUserRequest] = useState({startTime: null, endTime: null, requestor: null});
 
     const acceptResponse = () => {
-        // axios.get(`/admitByOwner/${props.chargerData.charger_key}/1`);
+        // axios.get(`{DOMAIN}/admitByOwner/${props.chargerData.charger_key}/1`);
         setUserRequest({startTime: null, endTime: null, requestor: null});
         alert('사용자의 공유 요청을 수락하였습니다.');
     };
     const declineResponse = () => {
-        // axios.get(`/admitByOwner/${props.chargerData.charger_key}/0`);
+        // axios.get(`{DOMAIN}/admitByOwner/${props.chargerData.charger_key}/0`);
         setUserRequest({startTime: null, endTime: null, requestor: null});
         alert('사용자의 공유 요청을 거절하였습니다.');
     };
 
     useEffect(() => {
         const interval = setInterval(() => {
-            // axios.get(`/checkForOwner/${props.chargerData.charger_id}`)
+            // axios.get(`{DOMAIN}/checkForOwner/${props.chargerData.charger_id}`)
             axios.get('./tempData/request.json')
             .then(res => {
                 const requestData = res.data;
