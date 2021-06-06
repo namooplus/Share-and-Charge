@@ -1,72 +1,130 @@
 .sendbird-app__wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.sendbird_wrapper{
+  height: 100vh;
+  overflow: hidden;
 }
 .sendbird-app__channellist-wrap {
-    width: 100vw;
-    flex-grow: 1;
+  width: 100vw;
+  flex-grow: 1;
 }
 .sendbird-app__conversation-wrap {
-    width: 100vw;
-    flex-grow: 1;
+  width: 100vw;
+  flex-grow: 1;
 }
 .sendbird-app__settingspanel-wrap {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
 }
 .sendbird-channel-list {
-    width: 100vw;
+  width: 100vw;
 }
 .sendbird-app__wrap.sendbird-app__channellist-wrap {
-    max-width: 100vw;
+  max-width: 100vw;
 }
 .MuiCardContent-root {
-    width: 100vw;
+  width: 100vw;
 }
 
 .false.sendbird-channel-header {
-    padding-right: 0;
+  padding-right: 0;
 }
 .sendbird-app__wrap .sendbird-app__channellist-wrap {
-    max-width: 100vw;
+  max-width: 100vw;
 }
 .sendbird-conversation {
-    height: 100vh;
+  height: 90vh;
+}
+.sendbird-chat-header__avatar--group-channel.sendbird-avatar{
+  visibility: collapse;
+}
+.sendbird-label.sendbird-chat-header__title.sendbird-label--h-2.sendbird-label--color-onbackground-1{
+transform: translateX(-1rem);
 }
 .tolist {
-    position: absolute;
-    background-image: url("/src/img/left-arrow.svg");
-    z-index: 1000;
-    width: 2rem;
-    height: 2rem;
-    color: black;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-left: 1rem;
+  position: absolute;
+  background-image: url("/src/img/left-arrow.svg");
+  z-index: 1000;
+  width: 2rem;
+  height: 2rem;
+  color: black;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 .tolist > img {
-    background-color: white;
+  background-color: white;
 }
 
 .sendbird-iconbutton.sendbird-chat-header__info {
-    z-index: 2;
+  z-index:1;
+  width: 2rem;
+  transform: translateX(-0.35rem) scale(0.88);
 }
 .sendbird-chat-header__right {
-    z-index: 10;
-    transform: translateX(-1rem);
+  z-index: 10;
+  transform: translateX(-1rem);
 }
 .sendbird-chat-header__left {
-    width: 100vw;
-    padding-left: 4rem;
+  width: 100vw;
+  padding-left: 4rem;
 }
 .sendbird-channel-header__right-icon {
-    transform: translateX(85vw);
-    left: 0;
-    position: absolute;
+  transform: translateX(85vw);
+  left: 0;
+  position: absolute;
+}
+.create_channel_bg {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(31, 31, 31, 0.549);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.create_channel_box {
+  width: 60vw;
+  height: 50vh;
+  padding : 1rem;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+  left: 25%;
+  align-items: center;
+}
+.create_channel_message {
+  margin-top: 25%;
+  margin-bottom: 50%;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+.provider_id{
+  font-size: 1.2rem;
+}
+.create_channel_button {
+  position: relative;
+  width: 95%;
+  /* margin-top: 25%; */
+  height: 3rem;
+  color : white;
+  border: none;
+  background-color: #742ddd;
+  font-size: 1rem;
+  border-radius: 1rem;
+  bottom: 0;
+  justify-self: unset;
 }
