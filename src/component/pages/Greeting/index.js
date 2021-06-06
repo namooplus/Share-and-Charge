@@ -35,21 +35,23 @@ function Home() {
     const [loginServer, setLoginServer] = useState(false);
 
     useEffect(() => {
-        axios.get("tempData/login_request_false.json").then((res) => {
-            if (res.data.response != "false") {
-                setLoginServer(true);
-                console.log("login success");
-                console.log(res.data.response);
-                localStorage.setItem(
-                    "temp_username",
-                    localStorage.getItem("username")
-                );
-                localStorage.removeItem("username");
-            } else {
-                setLoginServer(false);
-                console.log("unregistered user");
-            }
-        });
+        if (!loginServer) {
+            axios.get("tempData/login_request_false.json").then((res) => {
+                if (res.data.response !== "false") {
+                    setLoginServer(true);
+                    console.log("login success");
+                    console.log(res.data.response);
+                    localStorage.setItem(
+                        "temp_username",
+                        localStorage.getItem("username")
+                    );
+                    localStorage.removeItem("username");
+                } else {
+                    setLoginServer(false);
+                    console.log("unregistered user");
+                }
+            });
+        }
     }, [user]);
 
     return (
@@ -58,7 +60,7 @@ function Home() {
                 loginServer ? (
                     <SearchChargerHome auth={auth} />
                 ) : (
-                    <RegisterUser />
+                    <RegisterUser setLoginServer={setLoginServer} />
                 )
             ) : (
                 <Greeting />
