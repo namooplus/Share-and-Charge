@@ -8,11 +8,15 @@ import ShadowButton from '../../common/ShadowButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+import axios from 'axios';
+import { DOMAIN } from '../../../util/domain';
+
 function ChargerDescription(props) {
     const chargerData = props.location.state;
     if (!chargerData)
         props.history.goBack();
     
+    const [requestable, setRequestable] = useState(false);
     const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);
 
@@ -68,23 +72,43 @@ function ChargerDescription(props) {
         return timeRange;
     }
 
-    const requestShare = () => {
+    const checkRequestable = () => {
         if (startTime > endTime)
             alert('종료 시간이 시작 시간보다 빠를 수 없습니다.');
         else if (startTime == endTime)
             alert('시작 시간과 종료 시간이 같을 수 없습니다.');
         else
         {
-            alert(`${startTime}시 ~${endTime}시로 예약 요청합니다.`);
-            props.history.push({
-                pathname: "/chat",
-                state: {
-                    provider: {
-                        id: "kyle"
-                    }
+            axios.get(`${DOMAIN}/paymentValidCheck/${localStorage.getItem('username')}/${chargerData.charger_key}/${startTime}/${endTime - 1}`)
+            // 주변의 공유 충전소 리스트 출력
+            .then(res => {
+                if (res.statusText == 'You can change')
+                {
+                    setRequestable(true);
+                    alert('예약이 가능합니다. 요청하기를 눌러 공유를 요청하세요.');
                 }
+                else
+                {
+                    setRequestable(false);
+                    alert('예약이 불가능합니다.');
+                }
+            })
+            .catch(err => {
+                setRequestable(false);
+                alert('예약이 불가능합니다.');
             });
         }
+    };
+    const requestShare = () => {
+        alert(`${startTime}시 ~${endTime}시로 예약을 요청합니다.`);
+        props.history.push({
+            pathname: "/chat",
+            state: {
+                provider: {
+                    id: "kyle"
+                }
+            }
+        });
     };
 
     return (
@@ -115,7 +139,7 @@ function ChargerDescription(props) {
                             &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
                             <ShadowPicker value={endTime} onChange={handleEndTimeChange}/>
                         </SelectLayout>
-                        <ShadowButton onClick={requestShare}>요청하기</ShadowButton>
+                        <ShadowButton onClick={requestable ? requestShare : checkRequestable}>{requestable ? "요청하기" : "예약 가능 여부 확인하기"}</ShadowButton>
                     </FooterLayout>
                 ) : null
             }

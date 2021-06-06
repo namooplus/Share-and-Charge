@@ -14,7 +14,6 @@ import MyChargerList from "./component/pages/MyChargerList/index";
 import ChargerDescription from "./component/pages/ChargerDescription/index";
 import RegisterCharger from "./component/pages/RegisterCharger/index";
 import ChattingRoom from "./component/pages/ChattingRoom/index";
-import Payment from "./component/pages/Payment/index";
 import Menu from "./component/pages/Menu/index";
 import { UserContext } from "./component/pages/context/UserNameContext";
 import { TokenProvider } from "./component/pages/context/TokenContext";
@@ -65,11 +64,6 @@ function App() {
                             exact
                             path="/mychat"
                             component={CheckAuth(ChattingRoom, true)}
-                        />
-                        <Route
-                            exact
-                            path="/payment"
-                            component={CheckAuth(Payment, true)}
                         />
                         <Route
                             exact

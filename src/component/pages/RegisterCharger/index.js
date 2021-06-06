@@ -86,13 +86,13 @@ function RegisterCharger(props) {
       }
 
     // 서버로 새 충전소 등록
-    // axios.get(`{DOMAIN}/addCharger/${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address}/${addressA}/${addressB}/${addressC}/{imageURL}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`)
-    // .then(res => {
-    //   if (res.statusText == 'done')
-    //     alert('새 공유 충전소가 등록되었습니다.');
-    //   else
-    //     alert('새 공유 충전소를 등록하는데 실패하였습니다.');
-    // })
+    axios.get(`${DOMAIN}/addCharger/${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address}/${addressA}/${addressB}/${addressC}/{imageURL}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`)
+    .then(res => {
+      if (res.statusText == 'done')
+        alert('새 공유 충전소가 등록되었습니다.');
+      else
+        alert('새 공유 충전소를 등록하는데 실패하였습니다.');
+    })
     
     // 메인 페이지로 이동
     props.history.push('/');
