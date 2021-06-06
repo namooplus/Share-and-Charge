@@ -18,7 +18,7 @@ function MyChargerList(props) {
         axios.get('./tempData/myChargerList.json')
         // 나의 공유 충전소 리스트 출력
         .then(res => {
-            setMyChargerList(res.data.chargers_user);
+            setMyChargerList(res.data);
         })
         .catch(err => {
             setMyChargerList([1]);

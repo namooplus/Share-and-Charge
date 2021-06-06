@@ -77,5 +77,4 @@ export const SelectLayout = styled.div`
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    gap: 20px;
 `

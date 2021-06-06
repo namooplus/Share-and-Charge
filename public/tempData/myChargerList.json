@@ -1,26 +1,23 @@
-{
-    "chargers_user":
-        [
-            {
-                "charger_key":7,
-                "price_per_hour":10000,
-                "available_time_left":1,
-                "x":"126.993749476114",
-                "y":"37.495298892005",
-                "address_name":"서울 서초구 사평대로12길 82",
-                "region_1depth_name":"서울",
-                "region_2depth_name":"서초구",
-                "region_3depth_name":"방배동",
-                "image_src":"7",
-                "email":"corona20@gmail.com",
-                "owner_name":"Minseo",
-                "reservation_key":7,
-                "distance_from":0.05649827443723717
-            },
-            {"charger_key":6,"price_per_hour":25000,"available_time_left":1,"x":"126.99609298601","y":"37.4955388407699","address_name":"서울 서초구 사평대로20길 76","region_1depth_name":"서울","region_2depth_name":"서초구","region_3depth_name":"반포동","image_src":"6","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":6,"distance_from":0.167545664865255},
-            {"charger_key":10,"price_per_hour":18000,"available_time_left":1,"x":"126.993248248198","y":"37.5384982900504","address_name":"서울 용산구 회나무로44가길 52","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"10","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":10,"distance_from":4.764140075744661},
-            {"charger_key":9,"price_per_hour":15000,"available_time_left":1,"x":"126.994336269246","y":"37.5385987186705","address_name":"서울 용산구 회나무로28길 59","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"9","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":9,"distance_from":4.774582799151942},
-            {"charger_key":8,"price_per_hour":20000,"available_time_left":1,"x":"126.994629672381","y":"37.5416053693504","address_name":"서울 용산구 회나무로41가길 24","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"8","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":8,"distance_from":5.1090325141255075}
-        ]
-}
+[
+    {
+        "charger_key":7,
+        "price_per_hour":10000,
+        "available_time_left":1,
+        "x":"126.993749476114",
+        "y":"37.495298892005",
+        "address_name":"서울 서초구 사평대로12길 82",
+        "region_1depth_name":"서울",
+        "region_2depth_name":"서초구",
+        "region_3depth_name":"방배동",
+        "image_src":"7",
+        "email":"corona20@gmail.com",
+        "owner_name":"Minseo",
+        "reservation_key":7,
+        "distance_from":0.05649827443723717
+    },
+    {"charger_key":6,"price_per_hour":25000,"available_time_left":1,"x":"126.99609298601","y":"37.4955388407699","address_name":"서울 서초구 사평대로20길 76","region_1depth_name":"서울","region_2depth_name":"서초구","region_3depth_name":"반포동","image_src":"6","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":6,"distance_from":0.167545664865255},
+    {"charger_key":10,"price_per_hour":18000,"available_time_left":1,"x":"126.993248248198","y":"37.5384982900504","address_name":"서울 용산구 회나무로44가길 52","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"10","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":10,"distance_from":4.764140075744661},
+    {"charger_key":9,"price_per_hour":15000,"available_time_left":1,"x":"126.994336269246","y":"37.5385987186705","address_name":"서울 용산구 회나무로28길 59","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"9","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":9,"distance_from":4.774582799151942},
+    {"charger_key":8,"price_per_hour":20000,"available_time_left":1,"x":"126.994629672381","y":"37.5416053693504","address_name":"서울 용산구 회나무로41가길 24","region_1depth_name":"서울","region_2depth_name":"용산구","region_3depth_name":"이태원동","image_src":"8","email":"corona20@gmail.com","owner_name":"Minseo","reservation_key":8,"distance_from":5.1090325141255075}
+]
     

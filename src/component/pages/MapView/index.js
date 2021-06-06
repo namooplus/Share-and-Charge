@@ -45,7 +45,7 @@ function MapView(props) {
             let container = document.getElementById('charger-map-all');
             let options = {
                 center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                level: 5
+                level: 6
             };
             map = new kakao.maps.Map(container, options);
             return chargerData;
