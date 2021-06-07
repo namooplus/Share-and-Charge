@@ -41,7 +41,7 @@ function MyChargerList(props) {
                     else if (data === 1)
                         return <div style={{textAlign: 'center'}}>오류 : 나의 공유 충전소를 불러올 수 없습니다!</div>
                     else
-                        return <ShadowCardLive chargerData={data}/> 
+                        return <ShadowCardLive key={data.charger_key} chargerData={data}/> 
                 })}
             </ContentLayout>
             <FooterLayout>
