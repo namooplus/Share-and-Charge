@@ -1,7 +1,8 @@
 import React from 'react';
-
+import {Link} from "react-router-dom"
 function AppIcon(props) {
   return (
+    <Link to ="/">
     <svg width={props.width} height={props.height} viewBox="0 0 737 737" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="368.5" cy="368.5" r="368.5" fill="url(#paint0_linear)"/>
       <path d="M552.5 77.5L352.5 185L246.5 439L317 422L215.5 639L563.5 282L397 320.5L552.5 77.5Z" fill="white"/>
@@ -16,6 +17,7 @@ function AppIcon(props) {
       </linearGradient>
       </defs>
     </svg>
+    </Link>
   );
 }
 

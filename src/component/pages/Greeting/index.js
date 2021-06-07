@@ -37,38 +37,35 @@ function Home() {
   const [loginServer, setLoginServer] = useState(false);
   const [googlelogin, setGoogleLogin] = useState(false);
   useEffect(() => {
-    if(localStorage.getItem("username")!== null){
-    axios
-      .get(DOMAIN + "/login?email=" + localStorage.getItem("username"))
-      .then((res) => {
-        console.log("username : " + localStorage.getItem("username"));
-        console.log(res.data.length)
-        if(res.data.length!==0){
-
-          console.log("*****" + (res));
-        }
-        if (res.data.length!==0) {
-          setLoginServer(true);
-          console.log("login success");
-          console.log(res.data);
-          localStorage.setItem("englishname", res.data[0].name);
-        } else {
-          setLoginServer(false);
-          console.log("unregistered user");
-          localStorage.setItem(
-            "temp_username",
-            localStorage.getItem("username")
-          );
-          // localStorage.removeItem("username");
-        }
-      });
-    setGoogleLogin(true);
-    console.log("google login success")
-
-    }
-    else{
-      if(localStorage.getItem("username")===null){
-        console.log("google login fail")
+    if (localStorage.getItem("username") !== null) {
+      axios
+        .get(DOMAIN + "/login?email=" + localStorage.getItem("username"))
+        .then((res) => {
+          console.log("username : " + localStorage.getItem("username"));
+          console.log(res.data.length);
+          if (res.data.length !== 0) {
+            console.log("*****" + res);
+          }
+          if (res.data.length !== 0) {
+            setLoginServer(true);
+            console.log("login success");
+            console.log(res.data);
+            localStorage.setItem("englishname", res.data[0].name);
+          } else {
+            setLoginServer(false);
+            console.log("unregistered user");
+            localStorage.setItem(
+              "temp_username",
+              localStorage.getItem("username")
+            );
+            // localStorage.removeItem("username");
+          }
+        });
+      setGoogleLogin(true);
+      console.log("google login success");
+    } else {
+      if (localStorage.getItem("username") === null) {
+        console.log("google login fail");
         setGoogleLogin(false);
       }
     }
@@ -78,6 +75,8 @@ function Home() {
     <>
       {googlelogin ? (
         loginServer ? (
+          <SearchChargerHome auth={auth} />
+        ) : localStorage.getItem("username") !== null ? (
           <SearchChargerHome auth={auth} />
         ) : (
           <RegisterUser setLoginServer={setLoginServer} />
