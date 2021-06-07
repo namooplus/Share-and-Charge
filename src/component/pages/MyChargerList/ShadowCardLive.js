@@ -22,7 +22,7 @@ function ShadowCardLive(props) {
     useEffect(() => {
         const interval = setInterval(() => {
             // axios.get('./tempData/request.json')
-            axios.get(`${DOMAIN}/checkForOwner/${props.chargerData.charger_id}`)
+            axios.get(`${DOMAIN}/checkForOwner/${props.chargerData.charger_key}`)
             .then(res => {
                 const requestData = res.data;
                 setUserRequest({
@@ -38,7 +38,7 @@ function ShadowCardLive(props) {
         return () => {
             clearInterval(interval);
         };
-    });
+    }, []);
     return (
         <Card>
             <Link 
@@ -59,7 +59,7 @@ function ShadowCardLive(props) {
                 userRequest.requestor != null ? (
                     <CallbackLayout>
                         <Alert>
-                            {userRequest.requestor}로부터 공유 요청이 들어왔습니다.<br/>
+                            {userRequest.requestor.email}로부터 공유 요청이 들어왔습니다.<br/>
                             채팅 후 하단의 '수락' 혹은 '거절'을 선택해주세요.
                         </Alert>
                         <ButtonLayout>

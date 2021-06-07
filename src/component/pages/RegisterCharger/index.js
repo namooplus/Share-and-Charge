@@ -135,6 +135,9 @@ function RegisterCharger(props) {
     .then(() => {
       // 메인 페이지로 이동
       props.history.push('/');
+    })
+    .catch(err => {
+      alert('새 공유 충전소를 등록하는데 실패하였습니다.');
     });
   };
 
