@@ -80,7 +80,7 @@ function ChargerDescription(props) {
         {
             axios.get(`${DOMAIN}/paymentValidCheck/${localStorage.getItem('username')}/${chargerData.charger_key}/${startTime}/${endTime - 1}`)
             .then(res => {
-                if (res.statusText == 'You can change')
+                if (res.status == 200)
                 {
                     alert(`${startTime}시 ~${endTime}시로 예약을 요청합니다.`);
                     props.history.push({
