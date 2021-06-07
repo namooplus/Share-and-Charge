@@ -13,7 +13,10 @@ import {
   ProfileCol,
   ColumnHead,
   ColumnData,
-  UserName
+  UserName,
+  AcceptInfo,
+  AcceptMessage,
+  Time,
 } from "./components";
 import Hamburger from "../../common/Hamburger";
 import ShadowCard from "../../common/ShadowCard";
@@ -24,11 +27,15 @@ import axios from "axios";
 
 function MyPage(props) {
   const [requestedList, setRequestedList] = useState([]);
-  const [reservResponse, setReservResponse] = useState("요청한 충전소가 없습니다");
-  const [response, setResponse] = useState("dd");
+  const [reservResponse, setReservResponse] =
+    useState("You shouldn't have called this router.");
+  const [response, setResponse] = useState("You shouldn't have called this router.");
   const [credit, setCredit] = useState("0");
   const [englishname, setEnglishName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [startingTime, setStartingTime] = useState("1");
+  const [endingTime, setEndingTime] = useState("3");
+  const [providerId, setProviderId] = useState("mapoout@gmail.com");
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
@@ -42,7 +49,26 @@ function MyPage(props) {
         )
         .then((res) => {
           console.log(res);
-          setReservResponse(res.data);
+
+          if (typeof res.data === "string") {
+            if(localStorage.getItem("displaytime")!== null){
+              localStorage.setItem("displaytime", localStorage.getItem("displaytime")-"1");
+              if(localStorage.getItem("displaytime")==="0"){
+                localStorage.removeItem("displaytime");
+            setReservResponse(res.data);
+
+              }
+            }
+            else{
+              setReservResponse(res.data);
+            }
+          } else {
+            localStorage.setItem("displaytime", "10");
+            setReservResponse(JSON.stringify(res.data));
+            setStartingTime(res.data.starting_time);
+            setEndingTime(res.data.ending_time);
+            setProviderId(res.data.email);
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -62,7 +88,6 @@ function MyPage(props) {
           setCredit(res.data[0].coin);
           setEnglishName(res.data[0].name);
           setPhoneNumber(res.data[0].telephone_num);
-
         })
         .catch((error) => {
           console.log(error);
@@ -83,9 +108,21 @@ function MyPage(props) {
       case "3":
         return "";
       case "You shouldn't have called this router.":
-        return "예약한 내역이 없습니다."
+        return (
+          "요청한 내역이 없습니다."
+        
+        );
       default:
-        return param;
+        return (
+          <AcceptInfo>
+          <AcceptMessage>
+            {providerId} 님이 요청을 승인하였습니다.
+          </AcceptMessage>
+          <Time>
+            사용시간 : {startingTime}시 ~ {endingTime}시 
+          </Time>
+        </AcceptInfo>
+        );
     }
   };
   return (
@@ -112,11 +149,9 @@ function MyPage(props) {
             <ColumnHead>전화번호</ColumnHead>
             <ColumnData>{phoneNumber}</ColumnData>
           </ProfileCol>
-         
         </ProfileContainer>
         <SubLabel>내가 요청한 공유 충전소</SubLabel>
         <Response>{renderSwitch(reservResponse)}</Response>
-       
       </ContentLayout>
     </BaseLayout>
   );

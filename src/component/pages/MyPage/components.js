@@ -69,3 +69,14 @@ export const UserName = styled.div`
     font-size: 1.2rem;
     font-weight: 500;
 `
+export const AcceptInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    
+`
+export const AcceptMessage = styled.div`
+    font-weight: 500;
+`
+export const Time = styled.div`
+    font-size: 1rem;
+`
