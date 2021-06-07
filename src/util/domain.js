@@ -1,1 +1,1 @@
-export const DOMAIN = 'http://34.64.184.108:3308';
+export const DOMAIN = 'https://shareandcharge.kro.kr';
