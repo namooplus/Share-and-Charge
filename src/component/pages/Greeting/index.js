@@ -37,12 +37,13 @@ function Home() {
   const [loginServer, setLoginServer] = useState(false);
 
   useEffect(() => {
+    if(localStorage.getItem("username")!== null){
     axios
       .get(DOMAIN + "/login?email=" + localStorage.getItem("username"))
       .then((res) => {
         console.log("username : " + localStorage.getItem("username"));
         console.log("*****" + JSON.stringify(res.data));
-        if (res.data !== "[]") {
+        if (res.data !== [] || res != undefined) {
           setLoginServer(true);
           console.log("login success");
           console.log(res.data);
@@ -57,7 +58,7 @@ function Home() {
           );
           localStorage.removeItem("username");
         }
-      });
+      });}
   }, [user]);
 
   return (
