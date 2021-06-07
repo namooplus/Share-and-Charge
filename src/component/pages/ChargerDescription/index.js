@@ -36,8 +36,8 @@ function ChargerDescription(props) {
         marker.setMap(map);
 
         // 예약 시간 설정
-        setStartTime(12);
-        setEndTime(14);
+        setStartTime(chargerData.available[0]);
+        setEndTime(chargerData.available[chargerData.available.length - 1] + 1);
     }, []);
 
     const handleStartTimeChange = (event) => {

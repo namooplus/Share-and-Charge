@@ -21,8 +21,8 @@ function RegisterCharger(props) {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [price, setPrice] = useState("");
-  const [startTime, setStartTime] = useState(9);
-  const [endTime, setEndTime] = useState(15);
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(24);
 
   const convertToPosition = () => {
     // 지도 생성
@@ -125,8 +125,8 @@ function RegisterCharger(props) {
       }
 
     // 서버로 새 충전소 등록
-    console.log(`${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address}/${addressA}/${addressB}/${addressC}/${imageURL}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`);
-    axios.get(`${DOMAIN}/addCharger/${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address}/${addressA}/${addressB}/${addressC}/${imageURL}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`)
+    console.log(`${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address.replace(/ /gi,"-")}/${addressA}/${addressB}/${addressC}/${imageURL.replace(/\//gi,"_")}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`);
+    axios.get(`${DOMAIN}/addCharger/${price}/${startTime}/${endTime - 1}/${longitude}/${latitude}/${address.replace(/ /gi,"-")}/${addressA}/${addressB}/${addressC}/${imageURL.replace(/\//gi,"_")}/${localStorage.getItem('username')}/${localStorage.getItem('englishname')}`)
     .then(res => {
       if (res.data == 'done')
         alert('새 공유 충전소가 등록되었습니다.');
