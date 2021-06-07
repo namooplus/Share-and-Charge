@@ -35,9 +35,8 @@ function MapView(props) {
     }
     const successGet = (position) => {
         // 주변의 공유 충전소 리스트 요청
-        // axios.get(`${DOMAIN}/current/${position.coords.latitude}/${position.coords.longitude}`)
-        axios.get('./tempData/chargerList.json')
-        // 주변의 공유 충전소 리스트 출력
+        // axios.get('./tempData/chargerList.json')
+        axios.get(`${DOMAIN}/current/${position.coords.latitude}/${position.coords.longitude}`)
         .then(res => {
             const chargerData = res.data.chargers_near;
             setChargerList(chargerData);

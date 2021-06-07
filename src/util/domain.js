@@ -1,1 +1,1 @@
-export const DOMAIN = 'http://34.64.251.232:3308';
+export const DOMAIN = 'http://34.64.184.108:3308';

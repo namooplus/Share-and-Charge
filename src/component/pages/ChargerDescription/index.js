@@ -79,7 +79,6 @@ function ChargerDescription(props) {
         else
         {
             axios.get(`${DOMAIN}/paymentValidCheck/${localStorage.getItem('username')}/${chargerData.charger_key}/${startTime}/${endTime - 1}`)
-            // 주변의 공유 충전소 리스트 출력
             .then(res => {
                 if (res.statusText == 'You can change')
                 {
