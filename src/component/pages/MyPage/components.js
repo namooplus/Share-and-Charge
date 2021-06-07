@@ -80,3 +80,27 @@ export const AcceptMessage = styled.div`
 export const Time = styled.div`
     font-size: 1rem;
 `
+export const AddCoin = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`
+export const AddCoinAmount = styled.input`
+    border :1px solid;
+    flex-grow: 1;
+    height: 2rem;
+    border-radius: 0.5rem;
+
+
+
+`
+export const AddButton = styled.button`
+    background-color: #3ae350;
+    width:4rem;
+    height:2.3rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    color : white;
+    font-size: 1rem;
+`

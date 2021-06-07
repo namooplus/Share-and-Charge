@@ -17,6 +17,9 @@ import {
   AcceptInfo,
   AcceptMessage,
   Time,
+  AddCoin,
+  AddCoinAmount,
+  AddButton
 } from "./components";
 import Hamburger from "../../common/Hamburger";
 import ShadowCard from "../../common/ShadowCard";
@@ -39,6 +42,23 @@ function MyPage(props) {
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
+  const [toAdd, setToAdd] = useState("");
+  const addCoin = ()=>{
+    axios.get( DOMAIN + "/purchase_coin/" + localStorage.getItem("username")+"/"+toAdd).then(
+      (res)=>{
+        console.log(res);
+    setToAdd("");
+    alert("충전이 완료되었습니다");
+
+      }
+    ).catch((error)=>{
+      console.log(error);
+    })
+  }
+  const handleAddCoin = (event) =>{
+    setToAdd(event.target.value);
+    event.preventDefault();
+  }
   useEffect(() => {
     const interval = setInterval(() => {
       console.log(reservResponse);
@@ -152,6 +172,20 @@ function MyPage(props) {
         </ProfileContainer>
         <SubLabel>내가 요청한 공유 충전소</SubLabel>
         <Response>{renderSwitch(reservResponse)}</Response>
+        <HeaderLabel>충전하기</HeaderLabel>
+        <AddCoin>
+          <AddCoinAmount
+          placeholder="충전할 금액을 입력해주세요" type="number" step="10000"
+          onChange={handleAddCoin}
+          value={toAdd}
+
+          />
+
+          
+          <AddButton onClick={addCoin}>충전</AddButton>
+          
+        </AddCoin>
+        {toAdd}
       </ContentLayout>
     </BaseLayout>
   );
