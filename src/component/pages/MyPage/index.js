@@ -185,7 +185,6 @@ function MyPage(props) {
           <AddButton onClick={addCoin}>충전</AddButton>
           
         </AddCoin>
-        {toAdd}
       </ContentLayout>
     </BaseLayout>
   );
