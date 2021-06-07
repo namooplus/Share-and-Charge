@@ -27,11 +27,7 @@ export const BackIcon = styled.div`
     }
 `
 export const HeaderLayout = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    padding: 30px;
+    height: 210px;
     background-color: lightgray;
 `
 export const ContentLayout = styled.div`
@@ -39,6 +35,7 @@ export const ContentLayout = styled.div`
     flex-flow: column nowrap;
     align-items: stretch;
     padding: 30px 30px 138px 30px;
+    box-shadow: 0 0 20px gray;
     gap: 20px;
 `
 export const TitleInput = styled.input`
