@@ -1,1 +1,1 @@
-export const DOMAIN = 'http://60079a18b198.ngrok.io';
+export const DOMAIN = 'http://34.64.251.232:3308';
