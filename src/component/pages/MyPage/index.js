@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import https from "https";
 import {
   BaseLayout,
   HeaderLayout,
@@ -9,6 +9,11 @@ import {
   ContentLayout,
   SubLabel,
   Response,
+  ProfileContainer,
+  ProfileCol,
+  ColumnHead,
+  ColumnData,
+  UserName
 } from "./components";
 import Hamburger from "../../common/Hamburger";
 import ShadowCard from "../../common/ShadowCard";
@@ -19,49 +24,66 @@ import axios from "axios";
 
 function MyPage(props) {
   const [requestedList, setRequestedList] = useState([]);
-  const [reservResponse, setReservResponse] = useState("dd324");
+  const [reservResponse, setReservResponse] = useState("요청한 충전소가 없습니다");
   const [response, setResponse] = useState("dd");
+  const [credit, setCredit] = useState("0");
+  const [englishname, setEnglishName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
   useEffect(() => {
     const interval = setInterval(() => {
       console.log(reservResponse);
       axios
-        // .get(DOMAIN+"/checkForRequestor/"+localStorage.getItem("username"))
-        .get("tempData/reservation.json")
+        .get(
+          DOMAIN + "/checkForRequestor/" + localStorage.getItem("username"),
+          { httpsAgent: agent }
+        )
         .then((res) => {
-          setReservResponse(res.data.response);
           console.log(res);
+          setReservResponse(res.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, 50000);
+    }, 5000);
     return () => {
       clearInterval(interval);
     };
   }, []);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     axios
-  //       .get(DOMAIN+"/login?email="+localStorage.getItem("username"))
-  //       .then((res) => {
-  //         console.log(res)
-  //         setResponse(res);
-  //       });
-  //   }, 10000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios
+        .get(DOMAIN + "/login?email=" + localStorage.getItem("username"))
+        .then((res) => {
+          console.log(res);
+          setResponse(JSON.stringify(res));
+          setCredit(res.data[0].coin);
+          setEnglishName(res.data[0].name);
+          setPhoneNumber(res.data[0].telephone_num);
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 10000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   const renderSwitch = (param) => {
     switch (param) {
       case "0":
         return "something went wrong";
-      case "1":
+      case "your request was not accepted by provider.":
         return "❗ 제공자가 거절하였습니다 ❗";
-      case "2":
+      case "Your request was not regarded by provider yet.":
         return "❔ 제공자가 검토중입니다 ❔";
       case "3":
         return "";
+      case "You shouldn't have called this router.":
+        return "예약한 내역이 없습니다."
       default:
         return param;
     }
@@ -76,18 +98,25 @@ function MyPage(props) {
         <HeaderLabel>나의 정보</HeaderLabel>
       </HeaderLayout>
       <ContentLayout>
-        <span>{localStorage.getItem("username")}</span>
-        {requestedList.map((data) => {
-          console.log(data.chargerKey);
-          return (
-            <span key={data.chargerKey}>
-              {data.chargerKey} {data.startTime} {data.endTime} {data.requestor}
-            </span>
-          );
-        })}
+        <UserName>{localStorage.getItem("username")}</UserName>
+        <ProfileContainer>
+          <ProfileCol>
+            <ColumnHead>이름</ColumnHead>
+            <ColumnData>{englishname}</ColumnData>
+          </ProfileCol>
+          <ProfileCol>
+            <ColumnHead>크레딧</ColumnHead>
+            <ColumnData>{credit}</ColumnData>
+          </ProfileCol>
+          <ProfileCol>
+            <ColumnHead>전화번호</ColumnHead>
+            <ColumnData>{phoneNumber}</ColumnData>
+          </ProfileCol>
+         
+        </ProfileContainer>
         <SubLabel>내가 요청한 공유 충전소</SubLabel>
         <Response>{renderSwitch(reservResponse)}</Response>
-        {/* <div>{response}</div> */}
+       
       </ContentLayout>
     </BaseLayout>
   );

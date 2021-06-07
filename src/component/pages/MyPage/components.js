@@ -40,3 +40,32 @@ font-weight: 700;
 display: flex;
 
 `
+export const ProfileContainer = styled.div`
+display: flex;
+flex-direction: row;
+background-color:rgb(200, 200, 200);
+border-radius: 1rem;
+height: 4rem;
+padding-top: 1rem;
+/* align-items: center; */
+
+
+`
+export const ProfileCol = styled.div`
+display: flex;
+flex-direction: column;
+text-align: center;
+width: 30vw;
+
+`
+export const ColumnHead = styled.div`
+    font-size: 1.2rem;
+    font-weight: 700;
+`
+export const ColumnData = styled.div`
+font-size : 1rem;
+`
+export const UserName = styled.div`
+    font-size: 1.2rem;
+    font-weight: 500;
+`

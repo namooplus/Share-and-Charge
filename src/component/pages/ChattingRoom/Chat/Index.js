@@ -36,7 +36,7 @@ const CustomComponent = ({
 
       <div className="create_channel_box">
         <div className="create_channel_message">
-         <p className="provider_id">{"mapoout@naver.com"}</p>  <p>님과 채팅을 시작합니다</p>
+         <p className="provider_id">{providerId}</p>  <p>님과 채팅을 시작합니다</p>
         </div>
         <button
           className="create_channel_button"
@@ -47,7 +47,7 @@ const CustomComponent = ({
             params.isPublic = false;
             params.isEphemeral = false;
             params.isDistinct = false;
-            params.addUserIds([providerId, "mapoout@yonsei.ac.kr"]);
+            params.addUserIds([providerId, localStorage.getItem("username")]);
             params.name = curl;
             createChannel(params)
               .then((c) => {

@@ -52,7 +52,7 @@ function ChattingRoom(props) {
             <ViewContext.Provider value={{ view, toggleview }}>
                 <Chat
                     userId={userId}
-                    nickname={userId}
+                    nickname={localStorage.getItem("englishname")}
                     providerId={
                         toCreateChatRoom ? location.state.provider.id : "none"
                     }
