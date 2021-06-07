@@ -10,6 +10,8 @@ import {
     ButtonWrapper,
 } from "./components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DOMAIN } from "../../../util/domain";
+
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { GoogleLogin } from "react-google-login";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -36,15 +38,15 @@ function Home() {
 
     useEffect(() => {
         if (!loginServer) {
-            axios.get("http://1d829d6cab88.ngrok.io/login?email="+localStorage.getItem("username")).then((res) => {
+            axios.get(DOMAIN+"/login?email="+localStorage.getItem("username")).then((res) => {
                 console.log("*****"+JSON.stringify(res.data));
-                if (res.data.result !== "no") {
+                if (res.data.result !== "[]") {
                     setLoginServer(true);
                     console.log("login success");
                     console.log(res.data.response);
                 } else {
                     setLoginServer(false);
-                    console.log(res.data);
+                    alert(res.data);
                     console.log("unregistered user");
                     localStorage.setItem(
                         "temp_username",

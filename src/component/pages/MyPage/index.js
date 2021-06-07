@@ -1,70 +1,95 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import { BaseLayout, HeaderLayout, MenuLayout, HeaderLabel, ContentLayout, SubLabel } from './components';
-import Hamburger from '../../common/Hamburger';
-import ShadowCard from '../../common/ShadowCard';
-import ShadowButton from '../../common/ShadowButton';
-import AppIcon from '../../common/AppIcon';
-
-import axios from 'axios';
+import {
+  BaseLayout,
+  HeaderLayout,
+  MenuLayout,
+  HeaderLabel,
+  ContentLayout,
+  SubLabel,
+  Response,
+} from "./components";
+import Hamburger from "../../common/Hamburger";
+import ShadowCard from "../../common/ShadowCard";
+import ShadowButton from "../../common/ShadowButton";
+import AppIcon from "../../common/AppIcon";
+import { DOMAIN } from "../../../util/domain";
+import axios from "axios";
 
 function MyPage(props) {
-    const [requestedList, setRequestedList] = useState([]);
-
-    const checkRequestedList = async () => {
-      let chargerIdList = [];
-      let requestedListTemp = [];
-      // 나의 충전소 아이디 불러오기
-      // axios.get(`/user/${localStorage.getItem('username')}`)
-      const list = await axios.get('./tempData/myChargerList.json');
-      list.data.forEach(each => {
-        chargerIdList.push(each.charger_key);
-      });
-      await chargerIdList.forEach(async each => {
-        // axios.get(`/checkForOwner/${each}`)
-        await axios.get(`./tempData/request.json`)
-          .then((res) => {
-            const requestedData = res.data;
-            if (requestedData.email != null)
-            {
-              requestedListTemp.push({
-                chargerKey: each,
-                startTime: requestedData.starting_time,
-                endTime: requestedData.ending_time,
-                requestor: requestedData.email
-              });
-            }
-          });
-      });
-      setRequestedList(requestedListTemp);
+  const [requestedList, setRequestedList] = useState([]);
+  const [reservResponse, setReservResponse] = useState("dd324");
+  const [response, setResponse] = useState("dd");
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(reservResponse);
+      axios
+        // .get(DOMAIN+"/checkForRequestor/"+localStorage.getItem("username"))
+        .get("tempData/reservation.json")
+        .then((res) => {
+          setReservResponse(res.data.response);
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 50000);
+    return () => {
+      clearInterval(interval);
     };
-
-    useEffect(() => {
-      checkRequestedList();
-    }, []);
-
-    return (
-        <BaseLayout>
-            <HeaderLayout>
-                <MenuLayout>
-                    <AppIcon width="40px" height="40px"/>
-                    <Hamburger/>
-                </MenuLayout>
-                <HeaderLabel>나의 정보</HeaderLabel>
-            </HeaderLayout>
-            <ContentLayout>
-               <span>{localStorage.getItem('username')}</span>
-              {requestedList.map((data) => {
-                console.log(data.chargerKey);
-                return (
-                  <span key={data.chargerKey}>{data.chargerKey} {data.startTime} {data.endTime} {data.requestor}</span>   
-                  )
-                })}
-              <SubLabel>내가 요청한 공유 충전소</SubLabel>
-                
-            </ContentLayout>
-        </BaseLayout>
+  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     axios
+  //       .get(DOMAIN+"/login?email="+localStorage.getItem("username"))
+  //       .then((res) => {
+  //         console.log(res)
+  //         setResponse(res);
+  //       });
+  //   }, 10000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+  const renderSwitch = (param) => {
+    switch (param) {
+      case "0":
+        return "something went wrong";
+      case "1":
+        return "❗ 제공자가 거절하였습니다 ❗";
+      case "2":
+        return "❔ 제공자가 검토중입니다 ❔";
+      case "3":
+        return "";
+      default:
+        return param;
+    }
+  };
+  return (
+    <BaseLayout>
+      <HeaderLayout>
+        <MenuLayout>
+          <AppIcon width="40px" height="40px" />
+          <Hamburger />
+        </MenuLayout>
+        <HeaderLabel>나의 정보</HeaderLabel>
+      </HeaderLayout>
+      <ContentLayout>
+        <span>{localStorage.getItem("username")}</span>
+        {requestedList.map((data) => {
+          console.log(data.chargerKey);
+          return (
+            <span key={data.chargerKey}>
+              {data.chargerKey} {data.startTime} {data.endTime} {data.requestor}
+            </span>
+          );
+        })}
+        <SubLabel>내가 요청한 공유 충전소</SubLabel>
+        <Response>{renderSwitch(reservResponse)}</Response>
+        {/* <div>{response}</div> */}
+      </ContentLayout>
+    </BaseLayout>
   );
 }
 

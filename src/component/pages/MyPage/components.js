@@ -35,3 +35,8 @@ export const SubLabel = styled.h2`
     margin: 0;
     font-size: 1.3rem;
 `
+export const Response = styled.div`
+font-weight: 700;
+display: flex;
+
+`
