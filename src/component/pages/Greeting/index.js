@@ -35,35 +35,48 @@ const auth = firebase.auth();
 function Home() {
   const [user] = useAuthState(auth);
   const [loginServer, setLoginServer] = useState(false);
-
+  const [googlelogin, setGoogleLogin] = useState(false);
   useEffect(() => {
     if(localStorage.getItem("username")!== null){
     axios
       .get(DOMAIN + "/login?email=" + localStorage.getItem("username"))
       .then((res) => {
         console.log("username : " + localStorage.getItem("username"));
-        console.log("*****" + JSON.stringify(res.data));
-        if (res.data !== [] || res != undefined) {
+        console.log(res.data.length)
+        if(res.data.length!==0){
+
+          console.log("*****" + (res));
+        }
+        if (res.data.length!==0) {
           setLoginServer(true);
           console.log("login success");
           console.log(res.data);
           localStorage.setItem("englishname", res.data[0].name);
         } else {
           setLoginServer(false);
-          alert(res.data);
           console.log("unregistered user");
           localStorage.setItem(
             "temp_username",
             localStorage.getItem("username")
           );
-          localStorage.removeItem("username");
+          // localStorage.removeItem("username");
         }
-      });}
+      });
+    setGoogleLogin(true);
+    console.log("google login success")
+
+    }
+    else{
+      if(localStorage.getItem("username")===null){
+        console.log("google login fail")
+        setGoogleLogin(false);
+      }
+    }
   }, [user]);
 
   return (
     <>
-      {user ? (
+      {googlelogin ? (
         loginServer ? (
           <SearchChargerHome auth={auth} />
         ) : (

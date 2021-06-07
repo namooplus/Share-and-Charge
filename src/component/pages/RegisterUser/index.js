@@ -50,16 +50,20 @@ function RegisterUser({ setLoginServer }) {
 
  
   const registerSubmit = (event) => {
-    setLoginServer(true);
 	event.preventDefault();
+	console.log("signup button")
 	if(localStorage.getItem("temp_username")!==null){
 		localStorage.setItem("username", localStorage.getItem("temp_username"));
 		// localStorage.removeItem("temp_username");
 
 	}
-	axios.get(DOMAIN+"/"+englishName.replace(/\s/g, '')+"/"+localStorage.getItem("username")+"/"+phoneNumner+"/"+localStorage.getItem("token")).then(
-		((res)=>{console.log(JSON.stringify(res.data))})
+	axios.get(DOMAIN+"/signup/"+englishName.replace(/\s/g, '')+"/"+localStorage.getItem("username")+"/"+phoneNumner+"/"+localStorage.getItem("token")).then(
+		((res)=>{console.log(JSON.stringify(res.data));setLoginServer(true)}).catch((error)=>{
+			console.log(error);
+		})
+
 	)
+
 
   };
   return (
