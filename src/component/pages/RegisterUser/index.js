@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { UserContext } from "../context/UserNameContext";
 import axios from "axios";
+import { DOMAIN } from "../../../util/domain";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -47,14 +49,15 @@ function RegisterUser({ setLoginServer }) {
   };
 
  
-  const registerSubmit = () => {
+  const registerSubmit = (event) => {
     setLoginServer(true);
+	event.preventDefault();
 	if(localStorage.getItem("temp_username")!==null){
 		localStorage.setItem("username", localStorage.getItem("temp_username"));
 		// localStorage.removeItem("temp_username");
 
 	}
-	axios.get("http://1d829d6cab88.ngrok.io/signup/"+englishName.replace(/\s/g, '')+"/"+localStorage.getItem("username")+"/"+phoneNumner+"/"+localStorage.getItem("token")).then(
+	axios.get(DOMAIN+"/"+englishName.replace(/\s/g, '')+"/"+localStorage.getItem("username")+"/"+phoneNumner+"/"+localStorage.getItem("token")).then(
 		((res)=>{console.log(JSON.stringify(res.data))})
 	)
 
