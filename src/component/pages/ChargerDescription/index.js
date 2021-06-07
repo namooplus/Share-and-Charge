@@ -16,7 +16,6 @@ function ChargerDescription(props) {
     if (!chargerData)
         props.history.goBack();
     
-    const [requestable, setRequestable] = useState(false);
     const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);
 
@@ -72,7 +71,7 @@ function ChargerDescription(props) {
         return timeRange;
     }
 
-    const checkRequestable = () => {
+    const requestShare = () => {
         if (startTime > endTime)
             alert('종료 시간이 시작 시간보다 빠를 수 없습니다.');
         else if (startTime == endTime)
@@ -80,35 +79,26 @@ function ChargerDescription(props) {
         else
         {
             axios.get(`${DOMAIN}/paymentValidCheck/${localStorage.getItem('username')}/${chargerData.charger_key}/${startTime}/${endTime - 1}`)
-            // 주변의 공유 충전소 리스트 출력
             .then(res => {
-                if (res.statusText == 'You can change')
+                if (res.status == 200)
                 {
-                    setRequestable(true);
-                    alert('예약이 가능합니다. 요청하기를 눌러 공유를 요청하세요.');
+                    alert(`${startTime}시 ~${endTime}시로 예약을 요청합니다.`);
+                    props.history.push({
+                        pathname: "/chat",
+                        state: {
+                            provider: {
+                                id: chargerData.email
+                            }
+                        }
+                    });
                 }
                 else
-                {
-                    setRequestable(false);
-                    alert('예약이 불가능합니다.');
-                }
+                    alert('선택한 시간으로 예약 요청이 불가능합니다.');
             })
             .catch(err => {
-                setRequestable(false);
-                alert('예약이 불가능합니다.');
+                alert('예약 요청이 불가능합니다.');
             });
         }
-    };
-    const requestShare = () => {
-        alert(`${startTime}시 ~${endTime}시로 예약을 요청합니다.`);
-        props.history.push({
-            pathname: "/chat",
-            state: {
-                provider: {
-                    id: "kyle"
-                }
-            }
-        });
     };
 
     return (
@@ -131,15 +121,14 @@ function ChargerDescription(props) {
             </ContentLayout>
             {/* 자신의 충전소일 경우 공유 요청 레이아웃 숨기기 */}
             {
-                // localStorage.getItem('username')
-                chargerData.email != "corona20@gmail.com" ? (
+                chargerData.email != localStorage.getItem('username') ? (
                     <FooterLayout>
                         <SelectLayout>
                             <ShadowPicker value={startTime} onChange={handleStartTimeChange}/>
                             &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
                             <ShadowPicker value={endTime} onChange={handleEndTimeChange}/>
                         </SelectLayout>
-                        <ShadowButton onClick={requestable ? requestShare : checkRequestable}>{requestable ? "요청하기" : "예약 가능 여부 확인하기"}</ShadowButton>
+                        <ShadowButton onClick={requestShare}>요청하기</ShadowButton>
                     </FooterLayout>
                 ) : null
             }

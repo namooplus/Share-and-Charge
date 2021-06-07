@@ -39,6 +39,7 @@ export const ContentLayout = styled.div`
     flex-flow: column nowrap;
     align-items: stretch;
     padding: 30px 30px 216px 30px;
+    box-shadow: 0 0 20px gray;
 `
 export const Title = styled.h1`
     margin: 0px;

@@ -14,7 +14,7 @@ function FileUploader(props) {
 
   return (
     <>
-      <Button onClick={handleClick}>사진 업로드</Button>
+      <Button onClick={handleClick}>+</Button>
       <input type="file"
              ref={hiddenFileInput}
              style={{display:'none'}}
@@ -26,13 +26,14 @@ function FileUploader(props) {
 export default FileUploader;
 
 const Button = styled.button`
+    width: 100%;
+    height: 100%;
     border: none;
-    background-color: white;
-    box-shadow: 0 0 20px #999999;
-    padding: 7px 15px;
+    background: none;
     transition: background-color 500ms;
+    font-size: 5rem;
 
     &:hover {
-        background-color: lightgray;
+        background-color: rgba(0, 0, 0, 0.3);
     }
 `;
